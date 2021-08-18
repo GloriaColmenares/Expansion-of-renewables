@@ -1,1 +1,166 @@
 
+* ===================================================================
+* Date: 17.08.21
+*
+* Paper: Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution
+*
+* Period:   	 from 020117 to 300918
+
+* ===================================================================
+* Regressions
+* ===================================================================
+
+capture 
+clear all 
+
+* ===================================================================
+*NO RAMPING CASE (1) - Table 3
+* ===================================================================
+cd "C:\Users\glori\Documents\Papers_202005\1_Paper\Replication\R_paneldata\SFE"
+import excel using "sfe_one.xlsx", firstrow
+
+* Variable generation
+
+gen drd=0
+replace drd=1 if rd<0
+
+gen dchp=0
+
+replace dchp=1 if fcost>=1 & fcost< 24.99
+
+
+encode block, gen(bl)
+encode period, gen(semester)
+encode week, gen(wk)
+encode day, gen(dia)
+
+* Define directory, add here own directory "..."
+cd "C:\Users\glori\Documents\Papers_202005\1_Paper\Replication\Stata"
+save regression1, replace 
+
+************************************************************
+
+clear all
+use regression1, clear
+xtset hour
+keep if block == "off" | block == "peak3"
+xtivreg2 price dchp drd wk month (fcost ghgc = coal gas coa ), fe r orthog(coa) savefprefix(a2) saverfprefix(a2) 
+est store a1
+
+use regression1, clear
+xtset hour
+keep if block == "peak1" | block == "sppeak1" 
+xtivreg2 price dchp drd wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(b2) saverfprefix(b2) 
+est store b1
+
+use regression1, clear
+xtset hour
+keep if  block == "sppeak2" | block == "peak2"  
+xtivreg2 price dchp drd wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(c2) saverfprefix(c2) 
+est store c1
+
+estout* using "(T3_1).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
+
+
+* ===================================================================
+*RAMPING CASE (2) - Table 3
+* ===================================================================
+clear all
+cd "C:\Users\glori\Documents\Papers_202005\1_Paper\Replication\R_paneldata\SFE"
+import excel using "sfe_two.xlsx", firstrow
+
+* Variable generation
+
+gen drd=0
+replace drd=1 if rd<0
+
+gen dchp=0
+
+replace dchp=1 if fcost>=1 & fcost< 24.99
+
+
+encode block, gen(bl)
+encode period, gen(semester)
+encode week, gen(wk)
+encode day, gen(dia)
+
+* Define directory, add here own directory "..."
+cd "C:\Users\glori\Documents\Papers_202005\1_Paper\Replication\Stata"
+save regression2, replace
+
+************************************************************
+
+clear all
+use regression2, clear
+xtset hour
+keep if block == "off" | block == "peak3"
+xtivreg2 price wk month (fcost ghgc rampc = coal gas coa ), fe r orthog(coa) savefprefix(a2) saverfprefix(a2) 
+est store a1
+
+use regression2, clear
+xtset hour
+keep if block == "peak1" | block == "sppeak1" 
+xtivreg2 price wk month (fcost ghgc rampc = coal  gas coa ), fe r orthog(coa) savefprefix(b2) saverfprefix(b2) 
+est store b1
+
+use regression2, clear
+xtset hour
+keep if  block == "sppeak2" | block == "peak2"  
+xtivreg2 price wk month (fcost ghgc rampc = coal  gas coa ), fe r orthog(coa) savefprefix(c2) saverfprefix(c2) 
+est store c1
+
+estout* using "(T3_2).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
+
+* ===================================================================
+*FORECAST CASE (3) - Table 3
+* ===================================================================
+clear all
+cd "C:\Users\glori\Documents\Papers_202005\1_Paper\Replication\R_paneldata\SFE"
+import excel using "sfe_three.xlsx", firstrow
+
+* Variable generation
+
+gen drd=0
+replace drd=1 if rd<0
+
+gen dchp=0
+
+replace dchp=1 if fcost>=1 & fcost< 24.99
+
+
+encode block, gen(bl)
+encode period, gen(semester)
+encode week, gen(wk)
+encode day, gen(dia)
+
+* Define directory, add here own directory "..."
+cd "C:\Users\glori\Documents\Papers_202005\1_Paper\Replication\Stata"
+save regression3, replace
+
+************************************************************
+
+clear all
+use regression3, clear
+xtset hour
+keep if block == "off" | block == "peak3"
+xtivreg2 price dchp drd wk month (fcost ghgc = coal gas coa ), fe r orthog(coa) savefprefix(a2) saverfprefix(a2) 
+est store a1
+
+use regression3, clear
+xtset hour
+keep if block == "peak1" | block == "sppeak1" 
+xtivreg2 price dchp drd wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(b2) saverfprefix(b2) 
+est store b1
+
+use regression3, clear
+xtset hour
+keep if  block == "sppeak2" | block == "peak2"  
+xtivreg2 price dchp drd wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(c2) saverfprefix(c2) 
+est store c1
+
+estout* using "(T3_3).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
+
+* ===================================================================
+*ADDITIONAL REGRESSIONS (1-5) - Table 11
+* ===================================================================
+
