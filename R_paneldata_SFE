@@ -666,7 +666,6 @@ for(k in 1:R){
   datalist = list()
   for(i in 1:Obs){
     if (nrow(datv)==0) g
-    ##check this to reduce time of loop
     ZZ <- data.frame(datv[which(datv["time"] == i ),])
     WW <- data.frame(ZZ[order(ZZ$tc),])
     YY <- WW %>% mutate(cumsum = cumsum(capp2))
@@ -895,7 +894,6 @@ for(k in 1:R){
   datalist = list()
   for(i in 1:Obs){
     if (nrow(datv)==0) g
-    ##check this to reduce time of loop
     ZZ <- data.frame(datv[which(datv["time"] == i ),])
     WW <- data.frame(ZZ[order(ZZ$tcr),])
     YY <- WW %>% mutate(cumsum = cumsum(capp2))
@@ -1170,7 +1168,6 @@ for(k in 1:R){
   datalist = list()
   for(i in 1:Obs){
     if (nrow(datv)==0) g
-    ##check this to reduce time of loop
     ZZ <- data.frame(datv[which(datv["time"] == i ),])
     WW <- data.frame(ZZ[order(ZZ$tc),])
     YY <- WW %>% mutate(cumsum = cumsum(capp2))
