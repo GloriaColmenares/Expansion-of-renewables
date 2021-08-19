@@ -4,7 +4,7 @@
 *
 * Paper: Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution
 *
-* Period:   	 from 020117 to 300918
+* Period: 020117 to 300918
 
 * ===================================================================
 * Regressions
@@ -16,7 +16,7 @@ clear all
 * ===================================================================
 *NO RAMPING CASE (1) - Table 3
 * ===================================================================
-cd "C:\Users\...\R_paneldata\SFE"
+cd "C:\Users\...\Replication\R_paneldata\SFE"
 import excel using "sfe_one.xlsx", firstrow
 
 * Variable generation
@@ -35,7 +35,7 @@ encode week, gen(wk)
 encode day, gen(dia)
 
 * Define directory, add here own directory "..."
-cd "C:\Users\...\Replication\Stata"
+cd "C:\Users\glori\Documents\Papers_202005\1_Paper\Replication\Stata"
 save regression1, replace 
 
 ************************************************************
@@ -44,19 +44,19 @@ clear all
 use regression1, clear
 xtset hour
 keep if block == "off" | block == "peak3"
-xtivreg2 price dchp drd wk month (fcost ghgc = coal gas coa ), fe r orthog(coa) savefprefix(a2) saverfprefix(a2) 
+xtivreg2 price dchp drd wk month (fcost ghgc = coal gas coa ), fe r orthog(coa) savefprefix(a1) saverfprefix(a1) 
 est store a1
 
 use regression1, clear
 xtset hour
 keep if block == "peak1" | block == "sppeak1" 
-xtivreg2 price dchp drd wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(b2) saverfprefix(b2) 
+xtivreg2 price dchp drd wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(b1) saverfprefix(b1) 
 est store b1
 
 use regression1, clear
 xtset hour
 keep if  block == "sppeak2" | block == "peak2"  
-xtivreg2 price dchp drd wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(c2) saverfprefix(c2) 
+xtivreg2 price dchp drd wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(c1) saverfprefix(c1) 
 est store c1
 
 estout* using "(T3_1).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
@@ -85,82 +85,175 @@ encode week, gen(wk)
 encode day, gen(dia)
 
 * Define directory, add here own directory "..."
-cd "C:\Users\...\Replication\Stata"
+cd "C:\Users\glori\Documents\Papers_202005\1_Paper\Replication\Stata"
 save regression2, replace
 
-************************************************************
+
+* ===================================================================
 
 clear all
 use regression2, clear
 xtset hour
 keep if block == "off" | block == "peak3"
 xtivreg2 price wk month (fcost ghgc rampc = coal gas coa ), fe r orthog(coa) savefprefix(a2) saverfprefix(a2) 
-est store a1
+est store a2
 
 use regression2, clear
 xtset hour
 keep if block == "peak1" | block == "sppeak1" 
 xtivreg2 price wk month (fcost ghgc rampc = coal  gas coa ), fe r orthog(coa) savefprefix(b2) saverfprefix(b2) 
-est store b1
+est store b2
 
 use regression2, clear
 xtset hour
 keep if  block == "sppeak2" | block == "peak2"  
 xtivreg2 price wk month (fcost ghgc rampc = coal  gas coa ), fe r orthog(coa) savefprefix(c2) saverfprefix(c2) 
-est store c1
+est store c2
 
 estout* using "(T3_2).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
 
+
 * ===================================================================
-*FORECAST CASE (3) - Table 3
+*ADDITIONAL REGRESSIONS (1-6) - Table 11 / (1-4) NO RAMPING | (5-6) RAMPING
 * ===================================================================
-clear all
-cd "C:\Users\...\Replication\R_paneldata\SFE"
-import excel using "sfe_three.xlsx", firstrow
 
-* Variable generation
-
-gen drd=0
-replace drd=1 if rd<0
-
-gen dchp=0
-
-replace dchp=1 if fcost>=1 & fcost< 24.99
-
-
-encode block, gen(bl)
-encode period, gen(semester)
-encode week, gen(wk)
-encode day, gen(dia)
-
-* Define directory, add here own directory "..."
 cd "C:\Users\...\Replication\Stata"
-save regression3, replace
-
-************************************************************
-
 clear all
-use regression3, clear
+use regression1, clear
 xtset hour
 keep if block == "off" | block == "peak3"
-xtivreg2 price dchp drd wk month (fcost ghgc = coal gas coa ), fe r orthog(coa) savefprefix(a2) saverfprefix(a2) 
+ivreg2 price dchp drd  (fcost ghgc = coal gas coa ), r orthog(coa) savefprefix(a1) saverfprefix(a1) 
 est store a1
 
-use regression3, clear
+use regression1, clear
 xtset hour
 keep if block == "peak1" | block == "sppeak1" 
-xtivreg2 price dchp drd wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(b2) saverfprefix(b2) 
+ivreg2 price dchp drd  (fcost ghgc = coal gas coa ), r orthog(coa) savefprefix(b1) saverfprefix(b1) 
 est store b1
 
-use regression3, clear
+use regression1, clear
 xtset hour
 keep if  block == "sppeak2" | block == "peak2"  
-xtivreg2 price dchp drd wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(c2) saverfprefix(c2) 
+ivreg2 price dchp drd  (fcost ghgc = coal gas coa ), r orthog(coa) savefprefix(c1) saverfprefix(c1) 
 est store c1
 
-estout* using "(T3_3).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
+estout* using "(T11_1).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
 
 * ===================================================================
-*ADDITIONAL REGRESSIONS (1-5) - Table 11
+
+clear all
+use regression1, clear
+xtset hour
+keep if block == "off" | block == "peak3"
+xtivreg2 price dchp drd (fcost ghgc = coal gas coa ), fe r orthog(coa) savefprefix(a2) saverfprefix(a2) 
+est store a2
+
+use regression1, clear
+xtset hour
+keep if block == "peak1" | block == "sppeak1" 
+xtivreg2 price dchp drd (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(b2) saverfprefix(b2) 
+est store b2
+
+use regression1, clear
+xtset hour
+keep if  block == "sppeak2" | block == "peak2"  
+xtivreg2 price dchp drd (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(c2) saverfprefix(c2) 
+est store c2
+
+estout* using "(T11_2).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
+
 * ===================================================================
+
+clear all
+use regression1, clear
+xtset hour
+keep if block == "off" | block == "peak3"
+xtivreg2 price dchp drd muwind wk month (fcost ghgc = coal gas coa ), fe r orthog(coa) savefprefix(a3) saverfprefix(a3) 
+est store a3
+
+use regression1, clear
+xtset hour
+keep if block == "peak1" | block == "sppeak1" 
+xtivreg2 price dchp drd muwind wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(b3) saverfprefix(b3) 
+est store b3
+
+use regression1, clear
+xtset hour
+keep if  block == "sppeak2" | block == "peak2"  
+xtivreg2 price dchp drd muwind wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(c3) saverfprefix(c3) 
+est store c3
+
+estout* using "(T11_3).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
+
+* ===================================================================
+
+clear all
+use regression1, clear
+xtset hour
+keep if block == "off" | block == "peak3"
+xtivreg2 price dchp drd musolar wk month (fcost ghgc = coal gas coa ), fe r orthog(coa) savefprefix(a4) saverfprefix(a4) 
+est store a4
+
+use regression1, clear
+xtset hour
+keep if block == "peak1" | block == "sppeak1" 
+xtivreg2 price dchp drd musolar wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(b4) saverfprefix(b4) 
+est store b4
+
+use regression1, clear
+xtset hour
+keep if  block == "sppeak2" | block == "peak2"  
+xtivreg2 price dchp drd musolar wk month (fcost ghgc = coal  gas coa ), fe r orthog(coa) savefprefix(c4) saverfprefix(c4) 
+est store c4
+
+estout* using "(T11_4).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
+
+
+* ===================================================================
+
+clear all
+use regression2, clear
+xtset hour
+keep if block == "off" | block == "peak3"
+ivreg2 price dchp drd  (fcost ghgc = coal gas coa ), r orthog(coa) savefprefix(a5) saverfprefix(a5) 
+est store a5
+
+use regression2, clear
+xtset hour
+keep if block == "peak1" | block == "sppeak1" 
+ivreg2 price dchp drd  (fcost ghgc = coal gas coa ), r orthog(coa) savefprefix(b5) saverfprefix(b5) 
+est store b5
+
+use regression2, clear
+xtset hour
+keep if  block == "sppeak2" | block == "peak2"  
+ivreg2 price dchp drd  (fcost ghgc = coal gas coa ), r orthog(coa) savefprefix(c5) saverfprefix(c5) 
+est store c5
+
+estout* using "(T11_5).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
+
+
+* ===================================================================
+
+clear all
+use regression2, clear
+xtset hour
+keep if block == "off" | block == "peak3"
+xtivreg2 price dchp drd (fcost ghgc = coal gas coa), fe r orthog(coa) savefprefix(a6) saverfprefix(a6) 
+est store a6
+
+use regression2, clear
+xtset hour
+keep if block == "peak1" | block == "sppeak1" 
+xtivreg2 price dchp drd (fcost ghgc = coal gas coa ), fe r orthog(coa) savefprefix(b6) saverfprefix(b6) 
+est store b6
+
+use regression2, clear
+xtset hour
+keep if  block == "sppeak2" | block == "peak2"  
+xtivreg2 price dchp drd (fcost ghgc = coal gas coa ), fe r orthog(coa) savefprefix(c6) saverfprefix(c6) 
+est store c6
+
+estout* using "(T11_6).cvs", replace stats(instd  exexog inexog collin r2_a F widstat bw j jp cstat cstatp N) cells(b(star fmt(3)) se(par fmt(2)))
+
 
