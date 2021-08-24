@@ -4,7 +4,7 @@
 # Period 02.01.2017 - 30.09.2018
 # Author : GC
 # Created: 29.05.20
-# Last date updated: 17.08.2021
+# Last date updated: 23.08.2021
 
 #####################################################################################
 #Input files:
@@ -1043,5 +1043,47 @@ ggplot(data=sfe_two, aes(mumc)) +
 #############################################################################################
 #MC CALCULATION - END PROCESS
 #############################################################################################
+
+
+#SUMMARIES OF DATA and TABLES
+#####################################################################################
+#Table 5: SFE markups
+  remove(list = ls())
+  setwd("C:\\Users\\...\\Replication\\R_paneldata\\SFE") 
+  mk <- read_xlsx("sfe_two.xlsx")
+  mk[mk =="peak3" ] <- "off"
+  mk[mk =="sppeak1"] <- "peak1"
+  mk[mk=="sppeak2"] <- "peak2"
+  load("dos.RData")
+  Resdm5 <- read_xlsx("resdm5.xlsx")
+  #cap
+  cap = list()
+  for(n in 1:50){  
+    cap[[n]] <- lista[[n]]["cap"]
+  }
+  c = do.call(cbind, cap) 
+  cap1 <- data.frame(lista[[1]]["time"], cap =rowMeans(c))
+  mk1 <- merge(mk, cap1, by = "time")
+  mk2 <- with(mk1, subset(mk1,  fcost>1))
+  must <- Resdm5[,c(1,16)]
+  must$time <- c(1:15288)
+  mk3 <- join(mk2, must, by = "time")
+  mk3$mks <- (mk2$price - mk2$fcost) / mk2$price
+  mk3$Q <- mk3$must + mk3$cap
+  mk3$eta <- -125*(mk3$price/mk3$Q)
+  mk3$theta <- abs(mk3$mks*mk3$eta) 
+  mk4 <- mk3[, c(26,31,33,34)]
+  mk5 <- with( mk4, subset(mk4,  !is.na(theta)))
+  
+  library(plyr)
+  table5 <- mk5 %>%
+    group_by(block)%>%
+    summarise_all(funs(mean, sd))
+  
+rm(c, cap, cap1, lista, mk, mk1, mk2, mk3, mk4, mk5, must, Resdm5, n)
+  
+
+
+
 
 
