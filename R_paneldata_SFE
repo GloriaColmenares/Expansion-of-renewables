@@ -24,7 +24,11 @@
 #2. uno.Rdata         - R data to run SFE method (1)
 #3. dos.Rdata         - R data to run SFE method (2)
 #4. SFE_one.xlsx      - after SFE, excel for panel data to run SFE regression in Stata (1) 
-#5. SFE_two.xlsx      - after SFE, excel for panel data to run SFE regression in Stata (2) 
+#5. SFE_two.xlsx      - after SFE, excel for panel data to run SFE regression in Stata (2)
+#6. T5.xlsx           - Table 5 of the paper
+#7. T1.xlsx           - Table 1 of the paper
+#8. F2.pdf            - Figure 2 of the paper
+#9. F3.pdf            - Figure 3 of the paper
 
 
 #####################################################################################
