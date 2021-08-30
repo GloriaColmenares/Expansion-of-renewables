@@ -1045,16 +1045,19 @@ ggplot(data=sfe_two, aes(mumc)) +
 #############################################################################################
 
 
+#############################################################################################
 #SUMMARIES OF DATA and TABLES
-#####################################################################################
+#############################################################################################
 #Table 5: SFE markups
   remove(list = ls())
-  setwd("C:\\Users\\...\\Replication\\R_paneldata\\SFE") 
+
+  setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\R_paneldata\\SFE") 
   mk <- read_xlsx("sfe_two.xlsx")
   mk[mk =="peak3" ] <- "off"
   mk[mk =="sppeak1"] <- "peak1"
   mk[mk=="sppeak2"] <- "peak2"
   load("dos.RData")
+  setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\R_paneldata")
   Resdm5 <- read_xlsx("resdm5.xlsx")
   #cap
   cap = list()
@@ -1078,11 +1081,105 @@ ggplot(data=sfe_two, aes(mumc)) +
   library(plyr)
   table5 <- mk5 %>%
     group_by(block)%>%
-    summarise_all(funs(mean, sd))
+    summarise_all(funs(mean=mean, sd=sd))
+  setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Tables") 
+  write_xlsx(table5, "T5.xlsx")
   
 rm(c, cap, cap1, lista, mk, mk1, mk2, mk3, mk4, mk5, must, Resdm5, n)
   
 
+#Table 1: Descriptive stats 
+#####################################################################################
+remove(list = ls())
+
+setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\R_paneldata\\SFE") 
+load("sfe2r.RData")
+sfe2r <- na.omit(sfe2r)
+summary.t1 = sfe2r %>%
+  summarise_all(funs(mean, sd, min, max))   
+sum.t1 <- data.frame(t(summary.t1))
+sum.t1$A <- rownames(sum.t1) 
+setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Tables") 
+write_xlsx(sum.t1, "T1.xlsx")
+
+
+#Figure 2: Prices
+#####################################################################################
+remove(list = ls())
+
+setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\R_paneldata") 
+f2 <- read_xlsx("inst.xlsx")
+d <- create_series('2017-01-02' ~ '2018-09-30', '1 hour')
+f2 <- cbind(d, f2)
+
+figure2 <- ggplot(f2, aes(x=date)) + 
+  geom_line(aes(y = price, color = "Electricity"), size=0.05) + 
+  geom_line(aes(y = coal, color="Coal"), size=0.5)+
+  geom_line(aes(y = gas, color="Gas"), size=0.5) +
+  geom_line(aes(y = oil, color="Oil"), size=0.5) +
+  geom_line(aes(y = coa, color="CO2", size=1), size=1)+
+  geom_vline(xintercept = as.numeric(f2$date[c(8737)]), 
+             color = "black", linetype="dashed", size=0.5)+
+  scale_colour_manual("", 
+                      values = c("Electricity"="red", "Coal"="black", "Gas"="purple","Oil"="darkgreen", "CO2"="blue" )) +
+  ylim(-100, 150)+
+  theme(axis.text.x = element_text(size=18))+
+  theme(axis.text.y = element_text(size=18))+
+  xlab('Hour')+ ylab('Euro/MWh')+
+  theme(legend.position = c(0.8, 0.95),
+        legend.direction = "horizontal", legend.text = element_text(size=18),legend.background= element_blank(), panel.background = element_blank(), panel.grid.major=element_line(linetype="solid", colour="gray91"), axis.line = element_line(colour = "black") , plot.title = element_text(hjust = 0.5, size=18), axis.title.x = element_text(size=18),axis.title.y = element_text(size=18))
+
+pdf(file = "C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Figures\\F2.pdf",  
+    width = 18, 
+    height = 10) 
+plot(figure2)
+dev.off()
+
+
+#Figure 3: Hourly consumption
+#####################################################################################
+remove(list = ls())
+
+setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\R_paneldata\\SFE") 
+f3<- read_xlsx("resdm5.xlsx")
+f3 <- f3[,c(2:18)]/1000
+d <- create_series('2017-01-02' ~ '2018-09-30', '1 hour')
+f3 <- cbind(d, f3)
+
+f3a <- d %>%
+  mutate(demand = f3$demand,
+         solar = f3$Photovoltaik.MWh.,
+         woff = f3$Wind.Offshore.MWh.,
+         won = f3$Wind.Onshore.MWh.) %>%
+  collapse_by("daily") %>%
+  dplyr::group_by(date) %>%
+  dplyr::summarise_all(mean)
+
+f3b <- na.omit(f3a)
+
+figure3 <- ggplot(f3b, aes(x=date)) + 
+  geom_line(aes(y = (demand), color = "demand"), size=0.2) + 
+  geom_line(aes(y = (solar), color="solar") )+
+  geom_line(aes(y = (woff), color="Woff")) +
+  geom_line(aes(y = (won), color="Won")) +
+  geom_vline(xintercept = (f3b$date[c(8737)]), 
+             color = "black", linetype="dashed", size=0.5)+
+  scale_colour_manual("", 
+                      values = c("demand"="black", "solar"="yellow", "Woff"="lightblue","Won"="darkblue" )) +
+  theme(legend.position = c(0.8, 0.95),
+        legend.direction = "horizontal", legend.text = element_text(size=18), legend.title = element_blank(),legend.background= element_blank(), panel.background = element_blank(), panel.grid.major=element_line(linetype="solid", colour="gray91"), axis.line = element_line(colour = "black") , plot.title = element_text(hjust = 0.5, size=12), axis.title.x = element_text(size=18),axis.title.y = element_text(size=18))+
+  theme(axis.text.x = element_text(size=18))+
+  theme(axis.text.y = element_text(size=18))+
+  labs(x = "Hour",
+       y = "GWh",
+       color = "Legend")
+figure3
+  
+pdf(file = "C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Figures\\F3.pdf",  
+    width = 18, 
+    height = 10) 
+plot(figure3)
+dev.off()
 
 
 
