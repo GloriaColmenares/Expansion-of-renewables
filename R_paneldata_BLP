@@ -537,6 +537,25 @@ detach(vf2v)
 
 #vf2v <- vf2v[,-c(19:20)]
 write.csv(vf2v, file="i1rv.cvs")
+#ordering
+vf2vo <- vf2v[order(vf2v[,c(1)]),]
+write.csv(vf2vo, file="i1rvo.cvs")
+
+#with clustered_ids
+attach(vf2vo)
+vf2vo$type[tech=="braunk" | tech=="gascc" | tech=="gasoc" | tech=="gasst" | tech=="oil" | tech=="oiloc" | tech=="skonv" | tech=="steink" ] <- "FF"
+vf2vo$type[tech=="gaschp" | tech=="kerne" | tech=="pump" | tech=="serne"| tech=="wasser" ] <- "MUST"
+vf2vo$type[tech=="windon" | tech=="windoff"] <- "REN"
+detach(vf2vo)
+vf2vo$clustering_ids <- paste(vf2vo$type, vf2vo$market_ids)
+vf2vo$clustering_ids <- gsub('\\s+', '', vf2vo$clustering_ids)
+colnames(vf2vo)[colnames(vf2vo) == "product_ids"] <- "firmprod"
+write.csv(vf2vo, file="i1rvc.cvs")
+
+xx <- with(vf2v, subset(vf2v,  block=="off"))
+
+summary(xx)
+yy <- with(xx, subset(xx,  market_ids=="T 00001"))
 
 summary(vf2v)
 
@@ -552,4 +571,374 @@ write_xlsx(T1_m, "T1_m.xlsx")
 #############################################################################################
 #DATA CONSTRUCTION FOR PYTHON PYPBLP - END
 
+
+
+#TABLES AND FIGURES - START 
+#############################################################################################
+#Table 5 elasticity-adjusted markups
+setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\R_paneldata\\BLP")
+plants <- data.frame(read_excel("plants.xlsx")) 
+colnames(techa) <- c("item", "id")
+match <- merge(plants, techa, by="id")
+match <- match[,-c(1)]
+
+setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Python\\All") 
+pt <- data.frame(read_excel("pt.xlsx")) 
+colnames(pt)[1] <- c("concept")
+pt_fc <- with(pt, subset(pt, concept=="fcost" & (Case=="base" | Case=="ramp") ))
+pt_fc2 <- with(pt, subset(pt, concept=="fcost" & !(Case=="base" | Case=="ramp") ))
+pt_fc2 <- pt_fc2[order(pt_fc2[,c(10)]),]
+pt_fc2$type <- substring(pt_fc2$Case,1,3)
+pt_fc2$number <- substring(pt_fc2$Case,5,6)
+
+pt_co <- with(pt, subset(pt, concept=="co2" & (Case=="base" | Case=="ramp") ))
+pt_co2 <- with(pt, subset(pt, concept=="co2" & !(Case=="base" | Case=="ramp") ))
+pt_co2 <- pt_co2[order(pt_co2[,c(10)]),]
+pt_co2$type <- substring(pt_co2$Case,1,3)
+pt_co2$number <- substring(pt_co2$Case,5,6)
+
+p1 <-  ggplot(pt_fc, aes(x=Block, y=coeff, group=Case, linetype=(Case))) +
+  geom_line() +
+  geom_point()+ 
+  scale_y_continuous('Period', limits=c(0,2.3))+
+  theme(legend.position = c(0.25, 0.1),
+        legend.direction = "horizontal",legend.key.width = unit(0.3, 'cm'), legend.text = element_text(size=5),legend.key.size = unit(0.2, 'cm'),legend.key = element_rect(fill="white"), legend.title = element_blank(),legend.background= element_blank(), panel.background = element_blank(), panel.grid.major=element_line(linetype="solid", colour="gray91"), axis.line = element_line(colour = "black") , plot.title = element_text(hjust = 0.5, size=12), axis.title.x = element_text(size=9),axis.title.y = element_text(size=9))
+
+
+p2 <-  ggplot(pt_fc2, aes(x=Block, y=coeff, group=Case, color=number, linetype=(type))) +
+  geom_line() +
+  geom_point()+ 
+  scale_y_continuous('Period', limits=c(0,2.3))+
+  theme(legend.position = c(0.25, 0.9),
+        legend.direction = "horizontal",legend.key.width = unit(0.3, 'cm'),legend.text = element_text(size=5),legend.key.size = unit(0, 'cm'),legend.key = element_rect(fill="white"), legend.title = element_blank(),legend.background= element_blank(), panel.background = element_blank(), panel.grid.major=element_line(linetype="solid", colour="gray91"), axis.line = element_line(colour = "black") , plot.title = element_text(hjust = 0.5, size=12), axis.title.x = element_text(size=9),axis.title.y = element_text(size=9))
+p2
+
+p3 <-  ggplot(pt_co, aes(x=Block, y=coeff, group=Case, linetype=(Case))) +
+  geom_line() +
+  geom_point()+ 
+  scale_y_continuous('Period', limits=c(0,2.3))+
+  theme(legend.position = c(0.25, 0.1),
+        legend.direction = "horizontal",legend.key.width = unit(0.3, 'cm'),legend.text = element_text(size=5),legend.key.size = unit(0.2, 'cm'),legend.key = element_rect(fill="white"), legend.title = element_blank(),legend.background= element_blank(), panel.background = element_blank(), panel.grid.major=element_line(linetype="solid", colour="gray91"), axis.line = element_line(colour = "black") , plot.title = element_text(hjust = 0.5, size=12), axis.title.x = element_text(size=9),axis.title.y = element_text(size=9))
+
+
+p4 <-  ggplot(pt_co2, aes(x=Block, y=coeff, group=Case, color=number, linetype=(type))) +
+  geom_line() +
+  geom_point()+ 
+  scale_y_continuous('Period', limits=c(0,2.3))+
+  theme(legend.position = c(0.25, 0.25),
+        legend.direction = "horizontal",legend.key.width = unit(0.3, 'cm'),legend.text = element_text(size=5),legend.key.size = unit(0, 'cm'),legend.key = element_rect(fill="white"), legend.title = element_blank(),legend.background= element_blank(), panel.background = element_blank(), panel.grid.major=element_line(linetype="solid", colour="gray91"), axis.line = element_line(colour = "black") , plot.title = element_text(hjust = 0.5, size=12), axis.title.x = element_text(size=9),axis.title.y = element_text(size=9))
+
+
+pt_total <- grid.arrange(p1, p2, p3, p4, ncol = 2)
+
+pdf(file = "C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Figures\\pt_total.pdf",  
+    width = 8, 
+    height = 5) 
+plot(pt_total)
+dev.off()
+
+
+
+setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Python\\All") 
+ps <- data.frame(read.csv("ps.csv")) 
+ps_a <- ps[(ps$Case %in% c("base", "ramp")), ]
+ps_b <- ps[!(ps$Case %in% c("base", "ramp")), ]
+ps_a$type <- substring(ps_a$Case,1,3)
+ps_a$number <- substring(ps_a$Case,5,6)
+ps_b$type <- substring(ps_b$Case,1,3)
+ps_b$number <- substring(ps_b$Case,5,6)
+
+ps_cf1 <- with(ps_b, subset(ps_b, !(Case=="base" | Case=="ramp") & !(type=="CF2")))
+ps_cf2 <- with(ps_b, subset(ps_b, !(Case=="base" | Case=="ramp") & !(type=="CF1")))
+
+cs <- data.frame(read_excel("cs.xlsx")) 
+
+#base and ramp mks
+mks <- merge(ps_a, match, by="plant")
+mks1 <- subset(mks, (mks>=-1 & mks<=1))
+
+attach(mks1)
+mks1$type[item=="braunk" | item=="gascc" | item=="gasoc" | item=="gasst" | item=="oil" | item=="oiloc" | item=="skonv" | item=="steink" ] <- "FF"
+mks1$type[item=="gaschp" | item=="kerne" | item=="pump" | item=="serne"| item=="wasser" ] <- "MUST"
+mks1$type[item=="windon" | item=="windoff"] <- "REN"
+detach(mks1)
+
+mks2 <- mks1 %>%
+  dplyr::group_by(type,block, Case) %>%
+  dplyr::summarise(
+    mks_m = mean(mks, na.rm=T),
+    mks_sd = sd(mks, na.rm=T)
+  )
+
+
+#cf1 mks
+mks_cf1 <- merge(ps_cf1, match, by="plant")
+mks1_cf1 <- subset(mks_cf1, (mks>=-1 & mks<=1))
+
+attach(mks1_cf1)
+mks1_cf1$type[item=="braunk" | item=="gascc" | item=="gasoc" | item=="gasst" | item=="oil" | item=="oiloc" | item=="skonv" | item=="steink" ] <- "FF"
+mks1_cf1$type[item=="gaschp" | item=="kerne" | item=="pump" | item=="serne"| item=="wasser" ] <- "MUST"
+mks1_cf1$type[item=="windon" | item=="windoff"] <- "REN"
+detach(mks1_cf1)
+
+mks2_cf1 <- mks1_cf1 %>%
+  dplyr::group_by(type,block, Case) %>%
+  dplyr::summarise(
+    mks_m = mean(mks, na.rm=T),
+    mks_sd = sd(mks, na.rm=T)
+  )
+
+
+#cf2 mks
+mks_cf2 <- merge(ps_cf2, match, by="plant")
+mks1_cf2 <- subset(mks_cf2, (mkscf2>=-1 & mkscf2<=1))
+
+attach(mks1_cf2)
+mks1_cf2$type[item=="braunk" | item=="gascc" | item=="gasoc" | item=="gasst" | item=="oil" | item=="oiloc" | item=="skonv" | item=="steink" ] <- "FF"
+mks1_cf2$type[item=="gaschp" | item=="kerne" | item=="pump" | item=="serne"| item=="wasser" ] <- "MUST"
+mks1_cf2$type[item=="windon" | item=="windoff"] <- "REN"
+detach(mks1_cf2)
+
+mks2_cf2 <- mks1_cf2 %>%
+  dplyr::group_by(type,block, Case) %>%
+  dplyr::summarise(
+    mks_m = mean(mkscf2, na.rm=T),
+    mks_sd = sd(mkscf2, na.rm=T)
+  )
+
+ps_cf2$ps <- ps_cf2$pscf2
+
+welf <- rbind.data.frame(ps_a, ps_cf1, ps_cf2) 
+
+
+welf1 <- welf%>%
+  dplyr::group_by(market_ids, block, Case) %>%
+  dplyr::summarise(
+    ps = sum(ps, na.rm=T)
+  )
+
+welf2 <- merge(welf1, cs, by=c('market_ids', 'block', 'Case'))
+
+hh <- welf %>% 
+      distinct(market_ids, hour)
+
+welf3 <- merge(welf2, hh, by="market_ids")
+
+welf4 <- welf3%>%
+  dplyr::group_by(hour,Case) %>%
+  dplyr::summarise(
+    lnps_m = mean(log(ps), na.rm=T),
+    lnps_sd = sd(log(ps), na.rm=T),
+    lncs_m = mean(log(cs), na.rm=T),
+    lncs_sd = sd(log(cs), na.rm=T),
+  )
+
+w1 <- welf4[(welf4$Case %in% c("base", "ramp")), ]
+w2 <- welf4[!(welf4$Case %in% c("base", "ramp")), ]
+w2$type <- substring(w2$Case,1,3)
+w2$number <- substring(w2$Case,5,6)
+
+gw1 <-  ggplot(w1, aes(x=hour, y=lnps_m, group=Case, linetype=(Case))) +
+  geom_line() +
+  #geom_point()+ 
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('Period', limits=c(-9,9))+
+  theme(legend.position = c(0.25, 0.1),
+        legend.direction = "horizontal",legend.key.width = unit(0.3, 'cm'), legend.text = element_text(size=5),legend.key.size = unit(0.2, 'cm'),legend.key = element_rect(fill="white"), legend.title = element_blank(),legend.background= element_blank(), panel.background = element_blank(), panel.grid.major=element_line(linetype="solid", colour="gray91"), axis.line = element_line(colour = "black") , plot.title = element_text(hjust = 0.5, size=12), axis.title.x = element_text(size=9),axis.title.y = element_text(size=9))
+
+
+
+gw2 <-  ggplot(w2, aes(x=hour, y=lnps_m, group=Case, color=number,linetype=(type))) +
+  geom_line() +
+  #geom_point()+ 
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('Period', limits=c(-9,9))+
+  theme(legend.position = c(0.25, 0.1),
+        legend.direction = "horizontal",legend.key.width = unit(0.3, 'cm'), legend.text = element_text(size=5),legend.key.size = unit(0.2, 'cm'),legend.key = element_rect(fill="white"), legend.title = element_blank(),legend.background= element_blank(), panel.background = element_blank(), panel.grid.major=element_line(linetype="solid", colour="gray91"), axis.line = element_line(colour = "black") , plot.title = element_text(hjust = 0.5, size=12), axis.title.x = element_text(size=9),axis.title.y = element_text(size=9))
+
+
+
+gw3 <-  ggplot(w1, aes(x=hour, y=lncs_m, group=Case, linetype=(Case))) +
+  geom_line() +
+  #geom_point()+ 
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('Period', limits=c(-9,9))+
+  theme(legend.position = c(0.25, 0.1),
+        legend.direction = "horizontal",legend.key.width = unit(0.3, 'cm'), legend.text = element_text(size=5),legend.key.size = unit(0.2, 'cm'),legend.key = element_rect(fill="white"), legend.title = element_blank(),legend.background= element_blank(), panel.background = element_blank(), panel.grid.major=element_line(linetype="solid", colour="gray91"), axis.line = element_line(colour = "black") , plot.title = element_text(hjust = 0.5, size=12), axis.title.x = element_text(size=9),axis.title.y = element_text(size=9))
+
+gw4 <-  ggplot(w2, aes(x=hour, y=lncs_m, group=Case, color=number,linetype=(type))) +
+  geom_line() +
+  #geom_point()+ 
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('Period', limits=c(-9,9))+
+  theme(legend.position = c(0.25, 0.1),
+        legend.direction = "horizontal",legend.key.width = unit(0.3, 'cm'), legend.text = element_text(size=5),legend.key.size = unit(0.2, 'cm'),legend.key = element_rect(fill="white"), legend.title = element_blank(),legend.background= element_blank(), panel.background = element_blank(), panel.grid.major=element_line(linetype="solid", colour="gray91"), axis.line = element_line(colour = "black") , plot.title = element_text(hjust = 0.5, size=12), axis.title.x = element_text(size=9),axis.title.y = element_text(size=9))
+
+
+
+welf_total <- grid.arrange(gw1, gw2, gw3, gw4, ncol = 2)
+
+pdf(file = "C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Figures\\welf_total.pdf",  
+    width = 8, 
+    height = 5) 
+plot(welf_total)
+dev.off()
+
+
+setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Python\\All") 
+curv <- data.frame(read_excel("curva.xlsx")) 
+
+
+colnames(pt)[1] <- c("concept")
+
+attach(mks)
+mks$type[item=="braunk" | item=="gascc" | item=="gasoc" | item=="gasst" | item=="oil" | item=="oiloc" | item=="skonv" | item=="steink" ] <- "FF"
+mks$type[item=="gaschp" | item=="kerne" | item=="pump" | item=="serne"| item=="wasser" ] <- "MUST"
+mks$type[item=="windon" | item=="windoff"] <- "REN"
+detach(mks)
+
+
+ramp_m <- subset(mks1, Case=="ramp") 
+
+ramp_m1 <- ramp_m%>%
+  dplyr::group_by(market_ids, block, Case, type) %>%
+  dplyr::summarise(
+    mks = mean(mks, na.rm=T)
+  )
+
+ramp_m2 <- subset(ramp_m1, type=="FF") 
+
+curv1 <- curv[,-c(1,3,12)]
+ramp_m3 <- merge(ramp_m2, curv1, by="market_ids",all.x=T)
+
+
+ramp_m3$psi <- ramp_m3$mks*ramp_m3$agg0.1*(-1)
+
+ramp_m4 <- ramp_m3%>%
+  dplyr::group_by(block) %>%
+  dplyr::summarise(
+    mks_m = mean(mks, na.rm=T),
+    mks_sd = sd(mks, na.rm=T),
+    phi_m = mean(agg0.1, na.rm=T),
+    phi_sd = sd(agg0.1, na.rm=T),
+    psi_m = mean(psi, na.rm=T),
+    psi_sd = sd(psi, na.rm=T)
+  )
+
+setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Tables") 
+write_xlsx(ramp_m4, "T2_B.xlsx")
+
+
+#prices and shares 0-10, 0-20, 0-30
+#normal
+
+p1 <- subset(ps, Case=="CF1_10") 
+prices_10 <- p1[!duplicated(p1[c("prices")]),]
+p2 <- subset(ps, Case=="CF1_20") 
+prices_20 <- p2[!duplicated(p2[c("prices")]),]
+p3 <- subset(ps, Case=="CF1_25") 
+prices_25 <- p3[!duplicated(p3[c("prices")]),]
+
+
+a <- ggplot(prices_10, aes(x = hour, y = prices)) +
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('Prices', limits=c(-82,165))+
+  geom_point()
+
+
+b <- ggplot(prices_20, aes(x = hour, y = prices)) +
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('Prices', limits=c(-82,165))+
+  geom_point()
+
+b
+c <- ggplot(prices_25, aes(x = hour, y = prices)) +
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('Prices', limits=c(-82,165))+
+  geom_point()
+
+
+prices_cf1 <- grid.arrange(a,b,c, ncol = 3)
+
+
+pdf(file = "C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Figures\\prices_cf1.pdf",  
+    width = 8, 
+    height = 5) 
+plot(prices_cf1)
+dev.off()
+
+
+#shares
+sh1 <- subset(ps, Case=="CF1_10") 
+shares_10 <- sh1[!duplicated(sh1[c("shares")]),]
+sh2 <- subset(ps, Case=="CF1_20") 
+shares_20 <- sh2[!duplicated(sh2[c("shares")]),]
+sh3 <- subset(ps, Case=="CF1_25") 
+shares_25 <- sh3[!duplicated(sh3[c("shares")]),]
+
+
+as <- ggplot(shares_10, aes(x = hour, y = shares)) +
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('Shares', limits=c(0,0.4))+
+  geom_point()
+
+
+bs <- ggplot(shares_20, aes(x = hour, y = shares)) +
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('Shares', limits=c(0,0.4))+
+  geom_point()
+
+
+cs <- ggplot(shares_25, aes(x = hour, y = shares)) +
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('Shares', limits=c(0,0.4))+
+  geom_point()
+
+
+shares_cf1 <- grid.arrange(as,bs,cs, ncol = 3)
+
+
+pdf(file = "C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Figures\\shares_cf1.pdf",  
+    width = 8, 
+    height = 5) 
+plot(shares_cf1)
+dev.off()
+
+summary(ps)
+
+#costs
+c1 <- subset(ps, Case=="CF1_10") 
+costs_10 <- c1[!duplicated(c1[c("costs")]),]
+c2 <- subset(ps, Case=="CF1_20") 
+costs_20 <- c2[!duplicated(c2[c("costs")]),]
+c3 <- subset(ps, Case=="CF1_25") 
+costs_25 <- c3[!duplicated(c3[c("costs")]),]
+
+
+cas <- ggplot(costs_10, aes(x = hour, y = costs)) +
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('costs', limits=c(-150,150))+
+  geom_point()
+
+
+cbs <- ggplot(costs_20, aes(x = hour, y = costs)) +
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('costs', limits=c(-150, 150))+
+  geom_point()
+
+
+ccs <- ggplot(costs_25, aes(x = hour, y = costs)) +
+  scale_x_continuous(breaks = c(1,6,13,20,24))+ 
+  scale_y_continuous('costs', limits=c(-150,150))+
+  geom_point()
+
+
+costs_cf1 <- grid.arrange(cas,cbs,ccs, ncol = 3)
+
+
+pdf(file = "C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Figures\\costs_cf1.pdf",  
+    width = 8, 
+    height = 5) 
+plot(costs_cf1)
+dev.off()
 
