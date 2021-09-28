@@ -17,4 +17,4 @@ Use codes in file *BLP_python_**
 7. Run each case separately until line 2376 (each case takes around 20 hours)
 8. Go to *BLP_python_cf2* and run the entire code, each case separately (similar to 7).
 9. Go to *BLP_python* and run lines 2378-2426 to gather all results in files pt.xlsx, cs.xlsx, curva.xlsx, ps.csv
-10. Return to *R_paneldata_BLP* and run lines 576-946 to obtain Tables and Figures
+10. Return to *R_paneldata_BLP* and run lines 576-946 using files in 9 to obtain Tables and Figures
