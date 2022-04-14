@@ -3,11 +3,11 @@ The code in this replication package constructs the analysis file from the six d
 
 Datalist
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Data file        | Source           |  Notes|  Provided         |
+| ---------------- |:----------------:| -----:| ----------------  |
+| col 3 is         | right-aligned    | $1600 | x                 |
+| col 2 is         | centered         |   $12 | y                 | 
+| zebra stripes    | are neat         |    $1 | z                 |
 
 Codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
