@@ -1,5 +1,6 @@
 # Expansion-of-renewables
-The code in this replication package constructs the analysis file from the six data sources () using R, Stata and Python. Two main files run all of the code to generate the data for the 15 figures and 3 tables in the paper. The replicator should expect the code to run for about 14 hours.
+The code in this replication package constructs the analysis file from the six data sources () using R, Stata, Python, and Excel. Five main files run all of the code to generate the data for the 14 figures and 8 tables in the paper. The replicator should expect the code to run for about X hours.
+
 Codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
 **************************************************************************************
