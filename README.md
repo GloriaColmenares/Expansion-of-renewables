@@ -3,10 +3,11 @@ The code in this replication package constructs the analysis file from the six d
 
 Datalist
 
- | Number | Rider        | Time
- | 1      | Bullet Bob   | 56:07
- | 2      | Clumsy Colin | DNF 
- | 3      | Swift Susan  | 55:13
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 
 Codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
