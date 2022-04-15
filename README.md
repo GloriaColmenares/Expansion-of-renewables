@@ -14,6 +14,19 @@ This datalist is awesome
 | inst.xlsx                                                  |- prices of electricity, coal, gas, oil         |       |                   |
 | wind.xlsx                                                  |- Hourly wind data per plant                    |       |                   |
 | solar.xlsx                                                 |- Hourly wind data per plant                    |       |                   |
+| inst.xlsx                                                  |- prices of electricity, coal, gas, oil         |       |                   |
+| wind.xlsx                                                  |- Hourly wind data per plant                    |       |                   |
+| solar.xlsx                                                 |- Hourly wind data per plant                    |       |                   |
+| inst.xlsx                                                  |- prices of electricity, coal, gas, oil         |       |                   |
+| wind.xlsx                                                  |- Hourly wind data per plant                    |       |                   |
+| solar.xlsx                                                 |- Hourly wind data per plant                    |       |                   |
+| I.xlsx                                                     |- Electricity prod per plant                    |       |                   |
+| firmpy.xlsx                                                |- firms and plants match                        |       |                   |
+| resdm5.xlsx                                                | - Electricity prod per tech, demand, renewables|       |                   |
+| loadfa.xlsx                                                |- load factors as actual prod in hour           |       |                   |
+| temper.xlsx                                                |- temperatures per plant location               |       |                   |
+| ramp.xlsx                                                  |- Ramping costs                                 |       |                   |
+
 
 
 Codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
