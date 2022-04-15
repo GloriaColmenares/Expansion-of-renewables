@@ -1,13 +1,20 @@
 # Expansion-of-renewables
 The code in this replication package constructs the analysis file from the six data sources () using R, Stata, Python, and Excel. Five main files run all of the code to generate the data for the 14 figures and 8 tables in the paper. The replicator should expect the code to run for about X hours.
 
-Thi datalist is awesome 
+This datalist is awesome 
 
-| Data file        | Source           |  Notes|  Provided         |
-| ---------------- |:----------------:| -----:| ----------------  |
-| col 3 is         | right-aligned    | $1600 | x                 |
-| col 2 is         | centered         |   $12 | y                 | 
-| zebra stripes    | are neat         |    $1 | z                 |
+| Data file                                                  | Source                                         |  Notes|  Provided         |
+| ---------------------------------------------------------- |:----------------------------------------------:| -----:| ----------------  |
+| namechp.xlsx                                               |- plant capacitites                             |       |                   |
+| tout.xlsx                                                  |- outage ENTSOE of all plants                   |       |                   |
+| chp.xlsx                                                   |- chp data consumption and probabilities        |       |                   |
+| Marginalcosts.xlsx                                         |- fuel and Co2 costs                            |       |                   |
+| Realisierter_Stromverbrauch_201701020000_201809302345.csv  |- Actual electricity demand                     |       |                   |
+| Realisierte_Erzeugung_201701020000_201809302345.csv        |- Actual electricity production                 |       |                   |
+| inst.xlsx                                                  |- prices of electricity, coal, gas, oil         |       |                   |
+| wind.xlsx                                                  |- Hourly wind data per plant                    |       |                   |
+| solar.xlsx                                                 |- Hourly wind data per plant                    |       |                   |
+
 
 Codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
