@@ -4,7 +4,7 @@ The code in this replication package constructs the analysis file from the six d
 This datalist is awesome 
 
 | Data file                                                  | Source                                         |  Notes|  Provided         |
-| ---------------------------------------------------------- |:----------------------------------------------:| -----:| ----------------  |
+| ---------------------------------------------------------- |------------------------------------------------| -----:| ----------------  |
 | namechp.xlsx                                               |- plant capacitites                             |       |                   |
 | tout.xlsx                                                  |- outage ENTSOE of all plants                   |       |                   |
 | chp.xlsx                                                   |- chp data consumption and probabilities        |       |                   |
