@@ -13,7 +13,7 @@ Data on wind plant capacities were sourced from Aurora Energy Research (AER, 201
 
 This datalist is awesome 
 
-| Data file                                                  | Source                                         |  Notes|  Provided                     |
+| Data file                                                  | Type                                           | Source|  Provided                     |
 | ---------------------------------------------------------- |------------------------------------------------| ------| ----------------------------- |
 | namechp.xlsx                                               |- plant capacitites                             | Combines data from OPP, SMARD and AER   |  yes |                 |
 | tout.xlsx                                                  |- outage ENTSOE of all plants                   |       |                   |
