@@ -1,5 +1,5 @@
 # Expansion-of-renewables
-The code in this replication package constructs the analysis file from the six data sources () using R, Stata, Python, and Excel. Five main files run all of the code to generate the data for the 14 figures and 8 tables in the paper. The replicator should expect the code to run for about X hours.
+The code in this replication package constructs the analysis file from the N data sources () using R, Stata, Python, and Excel. Five main files run all of the code to generate the data for the 14 figures and 8 tables in the paper. The replicator should expect the code to run for about X hours.
 
 Data on conventional net plant capacities were downloaded from the Open Power System (OPS, 2018). We use data on conventional power plants for Germany (DE). Data can be downloaded from https://data.open-power-system-data.org/conventional_power_plants/2017-07-07 and https://doi.org/10.25832/conventional_power_plants/2018-12-20, select conventional_power_plants_DE.xlsx. A copy of the data is provided as part of this archive. The data are in the public domain.
 Datafiles: conventional_power_plants_DE_17.xlsx and conventional_power_plants_DE_18.xlsx. When the net capacity is lower than production, we use maximum production values from the period of analysis from the Strommarktdaten (SMARD, 2020***).
@@ -27,7 +27,6 @@ This datalist is awesome
 | inst.xlsx                                                  |- prices of electricity, coal, gas, oil         |       |                   |
 | wind.xlsx                                                  |- Hourly wind data per plant                    |       |                   |
 | solar.xlsx                                                 |- Hourly wind data per plant                    |       |                   |
-| inst.xlsx                                                  |- prices of electricity, coal, gas, oil         |       |                   |
 | wind.xlsx                                                  |- Hourly wind data per plant                    |       |                   |
 | solar.xlsx                                                 |- Hourly wind data per plant                    |       |                   |
 | I.xlsx                                                     |- Electricity prod per plant                    |       |                   |
