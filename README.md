@@ -3,9 +3,9 @@ The code in this replication package constructs the analysis file from the six d
 
 This datalist is awesome 
 
-| Data file                                                  | Source                                         |  Notes|  Provided         |
-| ---------------------------------------------------------- |------------------------------------------------| -----:| ----------------  |
-| namechp.xlsx                                               |- plant capacitites                             |       |                   |
+| Data file                                                  | Source                                         |  Notes|  Provided                     |
+| ---------------------------------------------------------- |------------------------------------------------| ------| ----------------------------- |
+| namechp.xlsx                                               |- plant capacitites                             | Combines data from OPP and ENTSO-E    |                   |
 | tout.xlsx                                                  |- outage ENTSOE of all plants                   |       |                   |
 | chp.xlsx                                                   |- chp data consumption and probabilities        |       |                   |
 | Marginalcosts.xlsx                                         |- fuel and Co2 costs                            |       |                   |
