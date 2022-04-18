@@ -24,11 +24,6 @@ This datalist is awesome
 | inst.xlsx                                                  |- prices of electricity, coal, gas, oil         |       |                   |
 | wind.xlsx                                                  |- Hourly wind data per plant                    |       |                   |
 | solar.xlsx                                                 |- Hourly wind data per plant                    |       |                   |
-| inst.xlsx                                                  |- prices of electricity, coal, gas, oil         |       |                   |
-| wind.xlsx                                                  |- Hourly wind data per plant                    |       |                   |
-| solar.xlsx                                                 |- Hourly wind data per plant                    |       |                   |
-| wind.xlsx                                                  |- Hourly wind data per plant                    |       |                   |
-| solar.xlsx                                                 |- Hourly wind data per plant                    |       |                   |
 | I.xlsx                                                     |- Electricity prod per plant                    |       |                   |
 | firmpy.xlsx                                                |- firms and plants match                        |       |                   |
 | resdm5.xlsx                                                | - Electricity prod per tech, demand, renewables|       |                   |
