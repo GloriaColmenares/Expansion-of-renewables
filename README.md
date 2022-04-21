@@ -6,7 +6,7 @@ Raw datafiles: conventional_power_plants_DE_17.xlsx and conventional_power_plant
 
 Data on wind plant capacities were sourced from Aurora Energy Research (AER, 2018) and are confidential, but may be obtained by contacting Prof. Dr. Andreas Löschel at andreas.loeschel@rub.de. It can take some months to negotiate data use agreements and gain access to the data. The author will assist with any reasonable replication attempts for two years following publication.
 
-
+Data on forced outage is obtained from Entso-e 
 
 
 
@@ -15,21 +15,21 @@ This datalist is awesome
 
 | Data file                                                  | Type                                           | Source|  Provided                     |
 | ---------------------------------------------------------- |------------------------------------------------| ------| ----------------------------- |
-| namechp.xlsx                                               |- plant capacitites                             | Combines data from OPP, SMARD and AER   |  yes |  
-| tout.xlsx                                                  |- outage ENTSOE of all plants                   |       |                   |
-| chp.xlsx                                                   |- chp data consumption and probabilities        |       |                   |
-| Marginalcosts.xlsx                                         |- fuel and Co2 costs                            |       |                   |
-| Realisierter_Stromverbrauch_201701020000_201809302345.csv  |- Actual electricity demand                     |       |                   |
-| Realisierte_Erzeugung_201701020000_201809302345.csv        |- Actual electricity production                 |       |                   |
-| inst.xlsx                                                  |- prices of electricity, coal, gas, oil         |       |                   |
-| wind.xlsx                                                  |- Hourly wind data per plant                    |       |                   |
-| solar.xlsx                                                 |- Hourly wind data per plant                    |       |                   |
-| I.xlsx                                                     |- Electricity prod per plant                    |       |                   |
-| firmpy.xlsx                                                |- firms and plants match                        |       |                   |
-| resdm5.xlsx                                                | - Electricity prod per tech, demand, renewables|       |                   |
-| loadfa.xlsx                                                |- load factors as actual prod in hour           |       |                   |
-| temper.xlsx                                                |- temperatures per plant location               |       |                   |
-| ramp.xlsx                                                  |- Ramping costs                                 |       |                   |
+| 1.namechp.xlsx                                               |- plant capacitites                             | Combines data from OPP, SMARD and AER   |  yes |  
+| 2.tout.xlsx                                                  |- outage ENTSOE of all plants                   |       |                   |
+| 3.chp.xlsx                                                   |- chp data consumption and probabilities        |       |                   |
+| 4.Marginalcosts.xlsx                                         |- fuel and Co2 costs                            |       |                   |
+| 5.Realisierter_Stromverbrauch_201701020000_201809302345.csv  |- Actual electricity demand                     |       |                   |
+| 6.Realisierte_Erzeugung_201701020000_201809302345.csv        |- Actual electricity production                 |       |                   |
+| 7.inst.xlsx                                                  |- prices of electricity, coal, gas, oil         |       |                   |
+| 8.wind.xlsx                                                  |- Hourly wind data per plant                    |       |                   |
+| 9.solar.xlsx                                                 |- Hourly wind data per plant                    |       |                   |
+| 10.I.xlsx                                                     |- Electricity prod per plant                    |       |                   |
+| 11.firmpy.xlsx                                                |- firms and plants match                        |       |                   |
+| 12.resdm5.xlsx                                                | - Electricity prod per tech, demand, renewables|       |                   |
+| 13.loadfa.xlsx                                                |- load factors as actual prod in hour           |       |                   |
+| 14.temper.xlsx                                                |- temperatures per plant location               |       |                   |
+| 15.ramp.xlsx                                                  |- Ramping costs                                 |       |                   |
 
 
 
