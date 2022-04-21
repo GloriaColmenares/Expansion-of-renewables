@@ -15,7 +15,7 @@ This datalist is awesome
 | Data file                                                  | Type                                           | Source|  Provided                     |
 | ---------------------------------------------------------- |------------------------------------------------| ------| ----------------------------- |
 | 1.namechp.xlsx                                               |- plant capacitites                             | Combines data from OPP, SMARD and AER   |  yes |  
-| 2.tout.xlsx                                                  |- outage all plants                     |       | Entso-e                                 |  yes |
+| 2.tout.xlsx                                                  |- outage all plants                             | Entso-e                                 |  yes |
 | 3.chp.xlsx                                                   |- chp data consumption and probabilities        |       |                   |
 | 4.Marginalcosts.xlsx                                         |- fuel and Co2 costs                            |       |                   |
 | 5.Realisierter_Stromverbrauch_201701020000_201809302345.csv  |- Actual electricity demand                     |       |                   |
