@@ -15,7 +15,7 @@ This datalist is awesome
 
 | Data file                                                  | Type                                           | Source|  Provided                     |
 | ---------------------------------------------------------- |------------------------------------------------| ------| ----------------------------- |
-| namechp.xlsx                                               |- plant capacitites                             | Combines data from OPP, SMARD and AER   |  yes |                 |
+| namechp.xlsx                                               |- plant capacitites                             | Combines data from OPP, SMARD and AER   |  yes |  
 | tout.xlsx                                                  |- outage ENTSOE of all plants                   |       |                   |
 | chp.xlsx                                                   |- chp data consumption and probabilities        |       |                   |
 | Marginalcosts.xlsx                                         |- fuel and Co2 costs                            |       |                   |
