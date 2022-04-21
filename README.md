@@ -5,7 +5,7 @@ The code in this replication package constructs the analysis file from the N dat
 Raw datafiles: conventional_power_plants_DE_17.xlsx and conventional_power_plants_DE_18.xlsx. When the net capacity is lower than production, we use maximum production values from the period of analysis from the Strommarktdaten (SMARD, 2020***). To calculate the total capacity in the market, we use data from https://www.smard.de/en. Raw datafile: Installed_generation_capacity_201701010000_201812312359.xlsx
 Data on wind plant capacities were sourced from Aurora Energy Research (AER, 2018) and are confidential, but may be obtained by contacting Prof. Dr. Andreas Löschel at andreas.loeschel@rub.de. It can take some months to negotiate data use agreements and gain access to the data. The author will assist with any reasonable replication attempts for two years following publication.
 
-2. Data on Forced outage failure (fof) is obtained from Entso-e and can be downloaded from https://transparency.entsoe.eu/outage-domain/r2/unavailabilityOfProductionAndGenerationUnits/show A copy of the data is provided as part of this archive. The data are in the public domain, previous registration.
+2. Data on Forced outage failure (fof) is obtained from Entso-e and can be downloaded from https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/SFTP-Transparency_Docs.html. The files are under the numerals 15.1.A&B, 15.1.C&D. A copy of the data is provided as part of this archive. The data are in the public domain, previous registration.
 
 3. 
 
