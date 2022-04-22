@@ -18,7 +18,9 @@ Heat profiles for commercial and residential loads have been sourced from OPS, a
 
 7. Actual production data (Realisierter Erzeugung) can be obtained from the SMARD database and downloaded from https://www.smard.de/en. The data are in the public domain.
 
-8. 
+8. Hourly data on wind speed can be found on the Deutscher Wetterdienst database under the Climate Data Center from https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/ 
+
+9. Hourly data on solar radiation
 
 
 This datalist is awesome 
