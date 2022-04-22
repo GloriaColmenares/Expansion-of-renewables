@@ -3,14 +3,14 @@ The code in this replication package constructs the analysis file from the N dat
 
 1. Data on conventional net plant installed capacities were downloaded from the Open Power System (OPS, 2018). We use data on conventional power plants for Germany (DE). Data can be downloaded from https://data.open-power-system-data.org/conventional_power_plants/2017-07-07 and https://doi.org/10.25832/conventional_power_plants/2018-12-20, select conventional_power_plants_DE.xlsx. A copy of the data is provided as part of this archive. The data are in the public domain.
 Raw datafiles: conventional_power_plants_DE_17.xlsx and conventional_power_plants_DE_18.xlsx. When the net capacity is lower than production, we use maximum production values from the period of analysis from the Strommarktdaten (SMARD, 2020***). To calculate the total capacity in the market, we use data from https://www.smard.de/en. Raw datafile: Installed_generation_capacity_201701010000_201812312359.xlsx
-Data on wind plant capacities were sourced from Aurora Energy Research (AER, 2018) may be obtained by contacting Prof. Dr. Andreas Löschel at andreas.loeschel@rub.de. It can take some months to negotiate data use agreements and gain access to the data. The author will assist with any reasonable replication attempts for two years following publication. A copy of the data is provided as part of this archive. 
+Data on wind plant capacities were sourced from Aurora Energy Research (AER, 2018) may be obtained by contacting Prof. Dr. Andreas Löschel at andreas.loeschel@rub.de. It can take some months to negotiate data use agreements and gain access to the data. The author will assist with any reasonable replication attempts for two years following publication. A copy of the data is provided as part of this archive and cannot be redistributed. 
 
 2. Data on Forced outage failure (fof) is obtained from Entso-e and can be downloaded from https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/SFTP-Transparency_Docs.html. The files are under the numerals 15.1.A&B, 15.1.C&D. A copy of the data is provided as part of this archive. The data are in the public domain, previous registration.
 
 3. Data on Combined heat power (chp) were downloaded from the Genesis Database of the Statisches Bundesamt Deutschland (SBD, 2022), Ergebnis 43311-0002 and 43351-0004, which can be downloaded from https://www-genesis.destatis.de/genesis/online?operation=themes&code=4#abreadcrumb item 43. A copy of the data is provided as part of this archive. The data are in the public domain.
 Heat profiles for commercial and residential loads have been sourced from OPS, and can be found in the public domain https://data.open-power-system-data.org/when2heat/2019-08-06. A copy of the data is provided as part of this archive. 
 
-4. Data on fuel prices is sourced from from Aurora Energy Research (AER, 2018) may be obtained by contacting Prof. Dr. Andreas Löschel at andreas.loeschel@rub.de. It can take some months to negotiate data use agreements and gain access to the data. The author will assist with any reasonable replication attempts for two years following publication. A copy of the data is provided as part of this archive. Data on CO2 prices are sourced from the European Energy Exchange (EEX) emission market (EUA), contract EUSP. The data can be bought, but a copy is provided as part of this archive. Raw datafiles: EmissionSpotHistory_2017.xls and EmissionSpotHistory_2018.xls.
+4. Data on fuel prices is sourced from from Aurora Energy Research (AER, 2018) may be obtained by contacting Prof. Dr. Andreas Löschel at andreas.loeschel@rub.de. It can take some months to negotiate data use agreements and gain access to the data. The author will assist with any reasonable replication attempts for two years following publication. A copy of the data is provided as part of this archive and cannot be redistributed. Data on CO2 prices are sourced from the European Energy Exchange (EEX) emission market (EUA), contract EUSP. The data can be bought, but a copy is provided as part of this archive and cannot be redistributed. Raw datafiles: EmissionSpotHistory_2017.xls and EmissionSpotHistory_2018.xls.
 
 5. Data on heat, emissions rate and O&M data are sourced from OPS, the Umweltbundesamt and the Öko-Institut e.V. A copy of the data is provided as part of this archive. This file also uses data from file 4.
 
@@ -20,11 +20,11 @@ Heat profiles for commercial and residential loads have been sourced from OPS, a
 
 8. Hourly data on wind speed, solar radiation (8.1.) and air temperature (8.2.) can be found on the Deutscher Wetterdienst database (DWD) under the Climate Data Center (wind, solar, and air temperature) from https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/. The data are in the public domain and is provided as part of this archive.
 
-9. Actual electricity production data per plant is sourced from AER and may be obtained by contacting Prof. Dr. Andreas Löschel at andreas.loeschel@rub.de. It can take some months to negotiate data use agreements and gain access to the data. The author will assist with any reasonable replication attempts for two years following publication. A copy of the data is provided as part of this archive. 
+9. Actual electricity production data per plant is sourced from AER and may be obtained by contacting Prof. Dr. Andreas Löschel at andreas.loeschel@rub.de. It can take some months to negotiate data use agreements and gain access to the data. The author will assist with any reasonable replication attempts for two years following publication. A copy of the data is provided as part of this archive and cannot be redistributed. 
 
 10. Data on plant ownership can be found on OPS. A copy of the data is provided as part of this archive. The data are in the public domain. Same raw datafiles as in 1.
 
-11. Data on 
+11. Data on ramping times for each fossil fuel plant are sourced from Boldt et al (2012) 
 
 This datalist is awesome 
 
