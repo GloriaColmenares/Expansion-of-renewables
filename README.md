@@ -1,7 +1,7 @@
 # Expansion-of-renewables
 The code in this replication package constructs the analysis file from the N data sources () using R, Stata, Python, and Excel. Five main files run all of the code to generate the data for the 14 figures and 8 tables in the paper. The replicator should expect the code to run for about X hours.
 
-1. Data on conventional net plant capacities were downloaded from the Open Power System (OPS, 2018). We use data on conventional power plants for Germany (DE). Data can be downloaded from https://data.open-power-system-data.org/conventional_power_plants/2017-07-07 and https://doi.org/10.25832/conventional_power_plants/2018-12-20, select conventional_power_plants_DE.xlsx. A copy of the data is provided as part of this archive. The data are in the public domain.
+1. Data on conventional net plant installed capacities were downloaded from the Open Power System (OPS, 2018). We use data on conventional power plants for Germany (DE). Data can be downloaded from https://data.open-power-system-data.org/conventional_power_plants/2017-07-07 and https://doi.org/10.25832/conventional_power_plants/2018-12-20, select conventional_power_plants_DE.xlsx. A copy of the data is provided as part of this archive. The data are in the public domain.
 Raw datafiles: conventional_power_plants_DE_17.xlsx and conventional_power_plants_DE_18.xlsx. When the net capacity is lower than production, we use maximum production values from the period of analysis from the Strommarktdaten (SMARD, 2020***). To calculate the total capacity in the market, we use data from https://www.smard.de/en. Raw datafile: Installed_generation_capacity_201701010000_201812312359.xlsx
 Data on wind plant capacities were sourced from Aurora Energy Research (AER, 2018) may be obtained by contacting Prof. Dr. Andreas Löschel at andreas.loeschel@rub.de. It can take some months to negotiate data use agreements and gain access to the data. The author will assist with any reasonable replication attempts for two years following publication. A copy of the data is provided as part of this archive. 
 
@@ -20,31 +20,29 @@ Heat profiles for commercial and residential loads have been sourced from OPS, a
 
 8. Hourly data on wind speed, solar radiation (8.1.) and air temperature (8.2.) can be found on the Deutscher Wetterdienst database (DWD) under the Climate Data Center (wind, solar, and air temperature) from https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/. The data are in the public domain and is provided as part of this archive.
 
-9. Actual electricity production data per plant is sourced from AER and may be obtained by contacting Prof. Dr. Andreas Löschel at andreas.loeschel@rub.de. It can take some months to negotiate data use agreements and gain access to the data. The author will assist with any reasonable replication attempts for two years following publication. A copy of the data is provided as part of this archive.
+9. Actual electricity production data per plant is sourced from AER and may be obtained by contacting Prof. Dr. Andreas Löschel at andreas.loeschel@rub.de. It can take some months to negotiate data use agreements and gain access to the data. The author will assist with any reasonable replication attempts for two years following publication. A copy of the data is provided as part of this archive. 
 
+10. Data on plant ownership can be found on OPS. A copy of the data is provided as part of this archive. The data are in the public domain. Same raw datafiles as in 1.
 
+11. Data on 
 
 This datalist is awesome 
 
-| Data file                                                  | Type                                           | Source|  Provided                     |
-| ---------------------------------------------------------- |------------------------------------------------| ------| ----------------------------- |
-| 1.namechp.xlsx                                               |- plant capacitites                             | Combines data from OPS, SMARD and AER   |  yes |  
-| 2.tout.xlsx                                                  |- fof per plant                                 | Combines data from Entso-e and 1.       |  yes |
-| 3.chp.xlsx                                                   |- chp data: consumption and probabilities       | Combines data from SBD and OPS          |  yes |
-| 4.inst.xlsx                                                  |- prices of electricity, coal, gas, oil         | AER and EEX                             |  yes |
-| 5.Marginalcosts.xlsx                                         |- fuel and Co2 costs                            | Combines data from various sources      |  yes |
-| 6.Realisierter_Stromverbrauch_201701020000_201809302345.csv  |- Actual electricity demand                     |  SMARD                                  |  yes |
-| 7.Realisierte_Erzeugung_201701020000_201809302345.csv        |- Actual electricity production                 |  SMARD                                  |  yes |
-| 8.wind.xlsx                                                  |- Hourly wind data per plant location           |  DWD                                    |  yes |
-| 8.1.solar.xlsx                                               |- Hourly wind data per plant location           |  DWD                                    |  yes |
-| 8.2 temper.xlsx                                              |- Hourly air temperatures per plant location    |  DWD                                    |  yes |
-| 9.I.xlsx                                                    |- Electricity prod per plant                    |       |                   |
-| 10.firmpy.xlsx                                               |- firms and plants match                        |       |                   |
-| 11.resdm5.xlsx                                               | - Electricity prod per tech, demand, renewables|       |                   |
-| 12.loadfa.xlsx                                               |- load factors as actual prod in hour           |       |                   |
-| 13.ramp.xlsx                                                 |- Ramping costs                                 |       |                   |
-
-
+| Data file                                                    | Type                                           | Source                                |Provided |
+| ------------------------------------------------------------ |------------------------------------------------| --------------------------------------|-------- |
+| 1.namechp.xlsx                                               |- plant capacitites                             | Combines data from OPS, SMARD and AER | yes |  
+| 2.tout.xlsx                                                  |- fof per plant                                 | Combines data from Entso-e and 1.     | yes |
+| 3.chp.xlsx                                                   |- chp data: consumption and probabilities       | Combines data from SBD and OPS        | yes |
+| 4.inst.xlsx                                                  |- prices of electricity, coal, gas, oil         | AER and EEX                           | yes |
+| 5.Marginalcosts.xlsx                                         |- fuel and Co2 costs                            | Combines data from various sources    | yes |
+| 6.Realisierter_Stromverbrauch_201701020000_201809302345.csv  |- Actual electricity demand                     |  SMARD                                | yes |
+| 7.Realisierte_Erzeugung_201701020000_201809302345.csv        |- Actual electricity production                 |  SMARD                                | yes |
+| 8.wind.xlsx                                                  |- Hourly wind data per plant location           |  DWD                                  | yes |
+| 8.1.solar.xlsx                                               |- Hourly wind data per plant location           |  DWD                                  | yes |
+| 8.2 temper.xlsx                                              |- Hourly air temperatures per plant location    |  DWD                                  | yes |
+| 9.I.xlsx                                                     |- Electricity prod per plant                    |  AER and Entsoe                       | yes |
+| 10.firmpy.xlsx                                               |- matching firms and plants                     |  OPS                                  | yes |
+| 11.ramp.xlsx                                                 |- Ramping costs                                 |       
 
 Codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
