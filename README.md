@@ -7,7 +7,9 @@ Data on wind plant capacities were sourced from Aurora Energy Research (AER, 201
 
 2. Data on Forced outage failure (fof) is obtained from Entso-e and can be downloaded from https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/SFTP-Transparency_Docs.html. The files are under the numerals 15.1.A&B, 15.1.C&D. A copy of the data is provided as part of this archive. The data are in the public domain, previous registration.
 
-3. 
+3. Data on Combined heat power (chp) were downloaded from the Genesis Database of the Statisches Bundesamt Deutschland (SBD, 2022), Ergebnis 43311-0002 and 43351-0004 which can be downloaded from https://www-genesis.destatis.de/genesis/online?operation=themes&code=4#abreadcrumb item 43. A copy of the data is provided as part of this archive. The data are in the public domain.
+
+4. 
 
 
 
