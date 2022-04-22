@@ -7,7 +7,8 @@ Data on wind plant capacities were sourced from Aurora Energy Research (AER, 201
 
 2. Data on Forced outage failure (fof) is obtained from Entso-e and can be downloaded from https://transparency.entsoe.eu/content/static_content/Static%20content/knowledge%20base/SFTP-Transparency_Docs.html. The files are under the numerals 15.1.A&B, 15.1.C&D. A copy of the data is provided as part of this archive. The data are in the public domain, previous registration.
 
-3. Data on Combined heat power (chp) were downloaded from the Genesis Database of the Statisches Bundesamt Deutschland (SBD, 2022), Ergebnis 43311-0002 and 43351-0004 which can be downloaded from https://www-genesis.destatis.de/genesis/online?operation=themes&code=4#abreadcrumb item 43. A copy of the data is provided as part of this archive. The data are in the public domain.
+3. Data on Combined heat power (chp) were downloaded from the Genesis Database of the Statisches Bundesamt Deutschland (SBD, 2022), Ergebnis 43311-0002 and 43351-0004, which can be downloaded from https://www-genesis.destatis.de/genesis/online?operation=themes&code=4#abreadcrumb item 43. A copy of the data is provided as part of this archive. The data are in the public domain.
+Heat profiles for commercial and residential loads have been sourced from OPS, and can be found in the public domain https://data.open-power-system-data.org/when2heat/2019-08-06. A copy of the data is provided as part of this archive.
 
 4. 
 
@@ -18,9 +19,9 @@ This datalist is awesome
 
 | Data file                                                  | Type                                           | Source|  Provided                     |
 | ---------------------------------------------------------- |------------------------------------------------| ------| ----------------------------- |
-| 1.namechp.xlsx                                               |- plant capacitites                             | Combines data from OPP, SMARD and AER   |  yes |  
-| 2.tout.xlsx                                                  |- fof per plant                                 | Entso-e                                 |  yes |
-| 3.chp.xlsx                                                   |- chp data: consumption and probabilities       |       |                   |
+| 1.namechp.xlsx                                               |- plant capacitites                             | Combines data from OPS, SMARD and AER   |  yes |  
+| 2.tout.xlsx                                                  |- fof per plant                                 | Combines data from Entso-e and 1.       |  yes |
+| 3.chp.xlsx                                                   |- chp data: consumption and probabilities       | Combines data from SBD and OPS          |  yes |
 | 4.Marginalcosts.xlsx                                         |- fuel and Co2 costs                            |       |                   |
 | 5.Realisierter_Stromverbrauch_201701020000_201809302345.csv  |- Actual electricity demand                     |       |                   |
 | 6.Realisierte_Erzeugung_201701020000_201809302345.csv        |- Actual electricity production                 |       |                   |
