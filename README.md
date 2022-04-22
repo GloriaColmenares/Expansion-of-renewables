@@ -32,7 +32,7 @@ References
 1. Boldt, Jenny, Lisa Hankel, Lilian Laurisch, Felix Lutterbeck, Pao-Yu Oei, Aram Sander, Andreas Schr ̈oder, Helena Schweter, Philipp Sommer, and Jasmin
 Sulerz. 2012. “Renewables in the Grid Modeling the German Power Market of the Year 2030.” Electricity Markets Working Papers, 48: 1–91.
 ---
-This datalist is awesome 
+#This datalist is awesome 
 
 | Data file                                                    | Type                                           | Source                                |Provided |
 | ------------------------------------------------------------ |------------------------------------------------| --------------------------------------|-------- |
@@ -48,7 +48,7 @@ This datalist is awesome
 | 8.2 temper.xlsx                                              |- Hourly air temperatures per plant location    |  DWD                                  | yes |
 | 9.I.xlsx                                                     |- Electricity prod per plant                    |  AER and Entso-e                      | yes |
 | 10.firmpy.xlsx                                               |- matching firms and plants                     |  OPS                                  | yes |
-| 11.ramp.xlsx                                                 |- Ramping costs                                 |       
+| 11.ramp.xlsx                                                 |- assigned hourly ramping costs                 |  Combines data from 5. and Boldt et al (2012)| yes |
 
 Codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
