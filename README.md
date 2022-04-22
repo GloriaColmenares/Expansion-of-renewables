@@ -26,8 +26,10 @@ Heat profiles for commercial and residential loads have been sourced from OPS, a
 
 11. Data on ramping times for each fossil fuel plant are sourced from Boldt et al (2012).
 
+---
 output: html_document
-bibliography: references.bib 
+bibliography: references.bib  
+---
 
 1. Boldt, Jenny, Lisa Hankel, Lilian Laurisch, Felix Lutterbeck, Pao-Yu Oei, Aram Sander, Andreas Schr ̈oder, Helena Schweter, Philipp Sommer, and Jasmin
 Sulerz. 2012. “Renewables in the Grid Modeling the German Power Market of the Year 2030.” Electricity Markets Working Papers, 48: 1–91.
