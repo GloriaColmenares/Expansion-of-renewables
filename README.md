@@ -40,7 +40,7 @@ This datalist is awesome
 | 8.wind.xlsx                                                  |- Hourly wind data per plant location           |  DWD                                  | yes |
 | 8.1.solar.xlsx                                               |- Hourly wind data per plant location           |  DWD                                  | yes |
 | 8.2 temper.xlsx                                              |- Hourly air temperatures per plant location    |  DWD                                  | yes |
-| 9.I.xlsx                                                     |- Electricity prod per plant                    |  AER and Entsoe                       | yes |
+| 9.I.xlsx                                                     |- Electricity prod per plant                    |  AER and Entso-e                      | yes |
 | 10.firmpy.xlsx                                               |- matching firms and plants                     |  OPS                                  | yes |
 | 11.ramp.xlsx                                                 |- Ramping costs                                 |       
 
