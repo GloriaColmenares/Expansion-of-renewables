@@ -18,9 +18,9 @@ Heat profiles for commercial and residential loads have been sourced from OPS, a
 
 7. Actual production data (Realisierter Erzeugung) can be obtained from the SMARD database and downloaded from https://www.smard.de/en. The data are in the public domain and is provided as part of this archive.
 
-8. Hourly data on wind speed, solar radiation (9.) and air temperature (10.) can be found on the Deutscher Wetterdienst database (DWD) under the Climate Data Center (wind, solar, and air temperature) from https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/. The data are in the public domain and is provided as part of this archive.
+8. Hourly data on wind speed, solar radiation (8.1.) and air temperature (8.2.) can be found on the Deutscher Wetterdienst database (DWD) under the Climate Data Center (wind, solar, and air temperature) from https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/. The data are in the public domain and is provided as part of this archive.
 
-11. nnn
+9. nnn
 
 
 This datalist is awesome 
@@ -35,13 +35,13 @@ This datalist is awesome
 | 6.Realisierter_Stromverbrauch_201701020000_201809302345.csv  |- Actual electricity demand                     |  SMARD                                  |  yes |
 | 7.Realisierte_Erzeugung_201701020000_201809302345.csv        |- Actual electricity production                 |  SMARD                                  |  yes |
 | 8.wind.xlsx                                                  |- Hourly wind data per plant location           |  DWD                                    |  yes |
-| 9.solar.xlsx                                                 |- Hourly wind data per plant location           |  DWD                                    |  yes |
-| 10.temper.xlsx                                               |- Hourly air temperatures per plant location    |  DWD                                    |  yes |
-| 11.I.xlsx                                                    |- Electricity prod per plant                    |       |                   |
-| 12.firmpy.xlsx                                               |- firms and plants match                        |       |                   |
-| 13.resdm5.xlsx                                               | - Electricity prod per tech, demand, renewables|       |                   |
-| 14.loadfa.xlsx                                               |- load factors as actual prod in hour           |       |                   |
-| 15.ramp.xlsx                                                 |- Ramping costs                                 |       |                   |
+| 8.1.solar.xlsx                                               |- Hourly wind data per plant location           |  DWD                                    |  yes |
+| 8.2 temper.xlsx                                              |- Hourly air temperatures per plant location    |  DWD                                    |  yes |
+| 9.I.xlsx                                                    |- Electricity prod per plant                    |       |                   |
+| 10.firmpy.xlsx                                               |- firms and plants match                        |       |                   |
+| 11.resdm5.xlsx                                               | - Electricity prod per tech, demand, renewables|       |                   |
+| 12.loadfa.xlsx                                               |- load factors as actual prod in hour           |       |                   |
+| 13.ramp.xlsx                                                 |- Ramping costs                                 |       |                   |
 
 
 
