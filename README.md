@@ -137,7 +137,7 @@ The provided codes reproduce:
 ---
 References
 
-1. Aurora Energy Research (AER). 2018. "Wind installed capacitites, Electricity production per plant, and fuel costs [dataset]," https://eos.auroraer.com/dragonfly/login, 2019-12-02.
+1. Aurora Energy Research (AER). 2019. "Wind installed capacitites, Electricity production per plant, and fuel costs [dataset]," https://eos.auroraer.com/dragonfly/login, 2019-12-02.
 2. Boldt, Jenny, Lisa Hankel, Lilian Laurisch, Felix Lutterbeck, Pao-Yu Oei, Aram Sander, Andreas Schr ̈oder, Helena Schweter, Philipp Sommer, and Jasmin
 Sulerz. 2012. “Renewables in the Grid Modeling the German Power Market of the Year 2030.” Electricity Markets Working Papers, 48: 1–91.
 
