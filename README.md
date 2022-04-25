@@ -89,7 +89,7 @@ General Instructions to run codes for "Expansion of Intermittent Renewables: Str
 
 **************************************************************************************
 Use codes in file *R_paneldata_**
-**************************************************************************************
+
 1. Download all files [here](https://mega.nz/folder/eckSFQYK#smoBcJIp-vna-XvnHdCZQg)
 2. Run *R_paneldata_SFE* until line 1041 to obtain files sfe_one.xlsx and sfe_two.xlsx
 3. Run Stata do file in *Stata_SFE* using excel files in step 2
@@ -99,15 +99,14 @@ Use codes in file *R_paneldata_**
 
 **************************************************************************************
 Use codes in file *BLP_python_**
-**************************************************************************************
+
 7. Run each case separately until line 2376 (each case takes around 20 hours)
 8. Go to *BLP_python_cf2* and run the entire code, each case separately (similar to step 7)
 9. Go to *BLP_python* and run lines 2378-2426 to gather all results in files pt.xlsx, cs.xlsx, curva.xlsx, ps.csv
 10. Return to *R_paneldata_BLP* and run lines 576-946 using files in step 9 to obtain Tables and Figures
 
 ---
-The provided codes reproduce
-
+The provided codes reproduce:
 
 | Figure/Table        | Program                                  | Lines  | Output file                    |Note |
 | ------------------- |------------------------------------------| -------| -------------------------------|---- |
