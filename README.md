@@ -50,6 +50,28 @@ Sulerz. 2012. “Renewables in the Grid Modeling the German Power Market of the 
 | 10.firmpy.xlsx                                               |- matching firms and plants                     |  OPS                                  | yes |
 | 11.ramp.xlsx                                                 |- assigned hourly ramping costs                 |  Combines data from 5. and Boldt et al (2012)| yes |
 
+---
+# Computational requirements
+
+RStudio 2021.09.0+351
+All packages below run with the "Ghost Orchid" Release (077589bcad3467ae79f318afe8641a1899a51606, 2021-09-20) for Windows
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.12.8 Chrome/69.0.3497.128 Safari/537.36
+  tidyverse
+  lubridate
+  data.table
+  readxl
+  reshape2
+  xts
+  tibbletime
+  library(tibbletime)
+  install.packages("writexl")
+  library(writexl)
+
+
+, Stata, Python, and Excel
+
+
+
 Codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
 **************************************************************************************
