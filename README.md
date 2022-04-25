@@ -88,14 +88,13 @@ The approximate time needed to reproduce the analyses on a standard desktop mach
 General Instructions to run codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
 **************************************************************************************
-Use codes in file *R_paneldata_**
+Codes in file *R_paneldata_**
 
-1. Download all files [here](https://mega.nz/folder/eckSFQYK#smoBcJIp-vna-XvnHdCZQg)
-2. Run *R_paneldata_SFE* until line 1041 to obtain files sfe_one.xlsx and sfe_two.xlsx
-3. Run Stata do file in *Stata_SFE* using excel files in step 2
-4. Return to *R_paneldata_SFE* and run lines 1055-1186 to obtain Tables and Figures
-5. Run *R_paneldata_BLP* until line 553 to obtain file i1rv.cvs
-6. For aditional data for Table 1 run lines 563-569
+1. Run *SFE.R* until line 1041 to obtain files sfe_one.xlsx and sfe_two.xlsx
+2. Run Stata do file in *Stata_SFE* using excel files in step 2
+3. Return to *R_paneldata_SFE* and run lines 1055-1186 to obtain Tables and Figures
+4. Run *R_paneldata_BLP* until line 553 to obtain file i1rv.cvs
+5. For aditional data for Table 1 run lines 563-569
 
 **************************************************************************************
 Use codes in file *BLP_python_**
