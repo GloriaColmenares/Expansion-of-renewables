@@ -55,8 +55,7 @@ Sulerz. 2012. “Renewables in the Grid Modeling the German Power Market of the 
 
 RStudio 2021.09.0+351 
 
-All packages below run with the "Ghost Orchid" Release (077589bcad3467ae79f318afe8641a1899a51606, 2021-09-20) for Windows
-Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.12.8 Chrome/69.0.3497.128 Safari/537.36
+All dependencies below are included at the beginining of the codes and run with the "Ghost Orchid" Release (077589bcad3467ae79f318afe8641a1899a51606, 2021-09-20) for Windows Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.12.8 Chrome/69.0.3497.128 Safari/537.36
   - tidyverse 
   - lubridate
   - data.table
@@ -73,14 +72,18 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)
   - openxlsx
  as of 2022-04-25
 
-Stata/IC 15.1 for Windows (64-bitx86-64)
+Stata/IC 15.1 for Windows (64-bitx86-64), revision 2018-06-06
+- xtivreg2 (as of 2015-02-19, vr. 1.0.17)
+- estout (as of 2022-03-22, vr. 3.30)
 
-All packages below run with the Revision 2018-06-06
+Python 3.8.8 | Anaconda Navigator 2.1.1 |Spyder 4.2.5 
+- pyblp 0.12.0
+- numpy 1.21.2
+- pandas 1.3.4
+- scipy 1.7.1
 
 
-
-
-, Python, and Excel
+, and Excel
 
 
 
