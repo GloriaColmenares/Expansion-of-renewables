@@ -87,6 +87,9 @@ Excel 2018
 Random seeds are used at line 657-658 and 664 in R, file SFE.R
 Random seeds are used at "pyblp.Integration" lines in python, files Base_Ramp.py and CF2.py
 
+The approximate time needed to reproduce the analyses on a standard desktop machine (2022) is about X days. Codes were last run on a core i7 10th generation Intel-based laptop with Windows 10 Pro version 21H1.
+
+
 ---
 Codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
