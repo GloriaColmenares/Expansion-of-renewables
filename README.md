@@ -84,6 +84,10 @@ Python 3.8.8 | Anaconda Navigator 2.1.1 |Spyder 4.2.5. To install all dependenci
 
 Excel 2018
 
+Random seeds are used at line 657-658 and 664 in R, file SFE.R
+Random seeds are used at "pyblp.Integration" lines in python, files Base_Ramp.py and CF2.py
+
+---
 Codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
 **************************************************************************************
