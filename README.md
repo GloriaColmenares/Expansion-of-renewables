@@ -110,7 +110,7 @@ The provided codes reproduce
 
 
 | Figure/Table        | Program                                  | Lines  | Output file                    |Note |
-| ------------------- |------------------------------------------| -------| ----------------------------- -|---- |
+| ------------------- |------------------------------------------| -------| -------------------------------|---- |
 | Table 1             |                                          |        | Combines data from OPS, SMARD  | yes |  
 | Table 2             |- fof per plant                           |   a     | Combines data from Entso-e and | yes |
 | Table A1            |- chp data: consumption and probabilities |    a    | Combines data from SBD and OPS | yes |
