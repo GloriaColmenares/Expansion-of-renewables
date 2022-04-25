@@ -64,12 +64,22 @@ Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)
   - reshape2
   - xts
   - tibbletime
-  - library(tibbletime)
-  - install.packages("writexl")
-  - library(writexl)
+  - writexl
+  - dummies
+  - caret
+  - psych
+  - gridExtra
+  - pastecs
+  - openxlsx
+ as of 2022-04-25
+
+Stata/IC 15.1 for Windows (64-bitx86-64)
+All packages below run with the Revision 2018-06-06
 
 
-, Stata, Python, and Excel
+
+
+, Python, and Excel
 
 
 
