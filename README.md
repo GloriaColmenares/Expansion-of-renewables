@@ -26,12 +26,6 @@ Heat profiles for commercial and residential loads have been sourced from OPS, a
 
 11. Data on ramping times for each fossil fuel plant are sourced from Boldt et al (2012).
 
----
-References
-
-1. Boldt, Jenny, Lisa Hankel, Lilian Laurisch, Felix Lutterbeck, Pao-Yu Oei, Aram Sander, Andreas Schr ̈oder, Helena Schweter, Philipp Sommer, and Jasmin
-Sulerz. 2012. “Renewables in the Grid Modeling the German Power Market of the Year 2030.” Electricity Markets Working Papers, 48: 1–91.
----
 <!---This datalist is awesome---> 
 
 | Data file                                                    | Type                                           | Source                                |Provided |
@@ -91,7 +85,7 @@ The approximate time needed to reproduce the analyses on a standard desktop mach
 
 
 ---
-Codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
+General Instructions to run codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
 **************************************************************************************
 Use codes in file *R_paneldata_**
@@ -110,3 +104,41 @@ Use codes in file *BLP_python_**
 8. Go to *BLP_python_cf2* and run the entire code, each case separately (similar to step 7)
 9. Go to *BLP_python* and run lines 2378-2426 to gather all results in files pt.xlsx, cs.xlsx, curva.xlsx, ps.csv
 10. Return to *R_paneldata_BLP* and run lines 576-946 using files in step 9 to obtain Tables and Figures
+
+---
+The provided codes reproduce:
+
+| Figure/Table        | Program                                  | Lines  | Output file                    |Note |
+| ------------------- |------------------------------------------| -------| ----------------------------- -|---- |
+| Table 1             |- plant capacitites                       |        | Combines data from OPS, SMARD  | yes |  
+| Table 2             |- fof per plant                           |        | Combines data from Entso-e and | yes |
+| Table A1            |- chp data: consumption and probabilities |        | Combines data from SBD and OPS | yes |
+| Table A2            |- prices of electricity, coal, gas, oil   |        | AER and EEX                    | yes |
+| Table A3            |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Table A4            |- chp data: consumption and probabilities |        | Combines data from SBD and OPS | yes |
+| Table A5            |- prices of electricity, coal, gas, oil   |        | AER and EEX                    | yes |
+| Table A6            |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Table A7            |- chp data: consumption and probabilities |        | Combines data from SBD and OPS | yes |
+| Table A8            |- prices of electricity, coal, gas, oil   |        | AER and EEX                    | yes |
+| Figure 1            |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A1           |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A2           |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A3           |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A4           |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A5           |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A6           |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A7           |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A8           |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A9           |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A10          |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A11          |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A12          |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+| Figure A13          |- fuel and Co2 costs                      |        | Combines data from various sou | yes |
+
+---
+References
+
+1. Boldt, Jenny, Lisa Hankel, Lilian Laurisch, Felix Lutterbeck, Pao-Yu Oei, Aram Sander, Andreas Schr ̈oder, Helena Schweter, Philipp Sommer, and Jasmin
+Sulerz. 2012. “Renewables in the Grid Modeling the German Power Market of the Year 2030.” Electricity Markets Working Papers, 48: 1–91.
+---
+
