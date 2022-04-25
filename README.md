@@ -106,7 +106,8 @@ Use codes in file *BLP_python_**
 10. Return to *R_paneldata_BLP* and run lines 576-946 using files in step 9 to obtain Tables and Figures
 
 ---
-The provided codes reproduce:
+The provided codes reproduce
+
 
 | Figure/Table        | Program                                  | Lines  | Output file                    |Note |
 | ------------------- |------------------------------------------| -------| ----------------------------- -|---- |
