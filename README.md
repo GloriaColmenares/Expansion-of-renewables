@@ -109,17 +109,6 @@ The provided codes reproduce:
 
 | Figure/Table        | Program                                  | Lines  | Output file                    |Note |
 | ------------------- |------------------------------------------| -------| -------------------------------|---- |
-| Table 1             |                                          |        | Combines data from OPS, SMARD  | yes |  
-| Table 2             |- fof per plant                           |   a     | Combines data from Entso-e and | yes |
-| Table A1            |- chp data: consumption and probabilities |    a    | Combines data from SBD and OPS | yes |
-| Table A2            |- prices of electricity, coal, gas, oil   |    a    | AER and EEX                    | yes |
-| Table A3            |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
-| Table A4            |- chp data: consumption and probabilities |    a    | Combines data from SBD and OPS | yes |
-| Table A5            |- prices of electricity, coal, gas, oil   |    a    | AER and EEX                    | yes |
-| Table A6            |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
-| Table A7            |- chp data: consumption and probabilities |    a    | Combines data from SBD and OPS | yes |
-| Table A8            |- prices of electricity, coal, gas, oil   |    a    | AER and EEX                    | yes |
-| Figure 1            |- fuel and Co2 costs                      |    a    | | yes |
 | Figure A1           |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
 | Figure A2           |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
 | Figure A3           |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
@@ -133,6 +122,15 @@ The provided codes reproduce:
 | Figure A11          |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
 | Figure A12          |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
 | Figure A13          |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
+| Figure A14          |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
+| Table A1            |- chp data: consumption and probabilities |    a    | Combines data from SBD and OPS | yes |
+| Table A2            |- prices of electricity, coal, gas, oil   |    a    | AER and EEX                    | yes |
+| Table A3            |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
+| Table A4            |- chp data: consumption and probabilities |    a    | Combines data from SBD and OPS | yes |
+| Table A5            |- prices of electricity, coal, gas, oil   |    a    | AER and EEX                    | yes |
+| Table A6            |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
+| Table A7            |- chp data: consumption and probabilities |    a    | Combines data from SBD and OPS | yes |
+| Table A8            |- prices of electricity, coal, gas, oil   |    a    | AER and EEX                    | yes |
 
 ---
 References
