@@ -108,11 +108,11 @@ Use codes in file *BLP_python_**
 The provided codes reproduce:
 
 | Figure/Table        | Program                                  | Lines  | Output file                    |Note |
-| ------------------- |------------------------------------------| -------| -------------------------------|---- |
-| Figure A1           |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
-| Figure A2           |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
-| Figure A3           |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
-| Figure A4           |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
+| ------------------- |------------------------------------------| ----------| -------------------------------|---- |
+| Figure A1           |- SFE.R                                   | 1365-1373 | Combines data from various sou | yes |
+| Figure A2           |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
+| Figure A3           |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
+| Figure A4           |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
 | Figure A5           |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
 | Figure A6           |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
 | Figure A7           |- fuel and Co2 costs                      |    a    | Combines data from various sou | yes |
