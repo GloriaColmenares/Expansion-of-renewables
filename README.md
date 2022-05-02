@@ -92,9 +92,9 @@ General Instructions to run codes for "Expansion of Intermittent Renewables: Str
 
 **************************************************************************************
 
-1. File <R_paneldata> run *SFE.R* until line 1041 to obtain files sfe_one.xlsx and sfe_two.xlsx
-2. Run Stata do file in *Stata_SFE* using excel files in step 2
-3. Return to *R_paneldata_SFE* and run lines 1055-1186 to obtain Tables and Figures
+1. Go to file <R_paneldata> run *SFE.R* until line 1041 to obtain files sfe_one.xlsx and sfe_two.xlsx
+2. Go to file <Stata> run *SFE.do* using excels in 1. as inputs
+3. Return to <R_paneldata> and run lines 1055-1186 to obtain Tables and Figures
 4. Run *R_paneldata_BLP* until line 553 to obtain file i1rv.cvs
 5. For aditional data for Table 1 run lines 563-569
 
