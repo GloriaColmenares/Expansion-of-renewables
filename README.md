@@ -113,8 +113,8 @@ The provided codes reproduce:
 | ------------------- |------------------------------------------| ---------------| -------------------------------|---- |
 | Figure A1           |- Excel                                   |                | 3.png                          | EEX |
 | Figure A2           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Figure A3           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Figure A4           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A3           |- SFE.R                                   | 1050-1075      | FA3                            |     |
+| Figure A4           |- SFE.R                                   | 1080-1114      | FA4                            |     |
 | Figure A5           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
 | Figure A6           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
 | Figure A7           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
@@ -125,14 +125,14 @@ The provided codes reproduce:
 | Figure A12          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
 | Figure A13          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
 | Figure A14          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Table A1            |- SFE.R                                   | 1365-1373      | T1.xlsx                        | Various sources |
+| Table A1            |- SFE.R                                   | 1125-1133      | T1.xlsx                        | Various sources |
 | Table A2            |- namechp.xlsx                            | sheet Table A2 | -                              | Various sources |
-| Table A3            |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Table A4            |- chp data: consumption and probabilities |    a           | Combines data from SBD and OPS | yes |
-| Table A5            |- prices of electricity, coal, gas, oil   |    a           | AER and EEX                    | yes |
+| Table A3            |- I.xlsx                                  | sheet Table A3 | -                              | Various sources |
+| Table A4            |- SFE.do +                                | 26-123         | (TA4_1).cvs+ (TA4_2).cvs       |     |
+| Table A5            |- SFE.do                                  | 130-266        | (TA5_1,2,3,4,5,6).cvs          | yes |
 | Table A6            |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
 | Table A7            |- chp data: consumption and probabilities |    a           | Combines data from SBD and OPS | yes |
-| Table A8            |- prices of electricity, coal, gas, oil   |    a           | AER and EEX                    | yes |
+| Table A8            |- SFE.R                                   | 1136-1170      | TA8_SFE.xlsx                   |     |
 
 ---
 References
