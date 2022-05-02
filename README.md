@@ -67,6 +67,9 @@ To install all dependencies described below, run codes at the beginining of the 
  as of 2022-04-25
 
 Stata/IC 15.1 for Windows (64-bitx86-64), revision 2018-06-06. To install all dependencies described below, run codes at the beginining of the Stata files.
+- ivreg2 (as of 2019-11-22, vr. 4.1.11)
+- ranktest (as of 2010-09-21, vr. 2.0.04)
+- ivreg210 (as of 2015-01-19, vr. 3.1.10)
 - xtivreg2 (as of 2015-02-19, vr. 1.0.17)
 - estout (as of 2022-03-22, vr. 3.30)
 
