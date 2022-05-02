@@ -109,30 +109,30 @@ Use codes in file *BLP_python_**
 ---
 The provided codes reproduce:
 
-| Figure/Table        | Program                                  | Lines     | Output file                    |Note |
-| ------------------- |------------------------------------------| ----------| -------------------------------|---- |
-| Figure A1           |- Excel                                   |           | 3.png                          | EEX |
-| Figure A2           |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A3           |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A4           |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A5           |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A6           |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A7           |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A8           |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A9           |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A10          |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A11          |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A12          |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A13          |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Figure A14          |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Table A1            |- SFE.R                                   | 1365-1373 | T1.xlsx                        | Various sources |
-| Table A2            |- prices of electricity, coal, gas, oil   |    a      | AER and EEX                    | yes |
-| Table A3            |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Table A4            |- chp data: consumption and probabilities |    a      | Combines data from SBD and OPS | yes |
-| Table A5            |- prices of electricity, coal, gas, oil   |    a      | AER and EEX                    | yes |
-| Table A6            |- fuel and Co2 costs                      |    a      | Combines data from various sou | yes |
-| Table A7            |- chp data: consumption and probabilities |    a      | Combines data from SBD and OPS | yes |
-| Table A8            |- prices of electricity, coal, gas, oil   |    a      | AER and EEX                    | yes |
+| Figure/Table        | Program                                  | Lines          | Output file                    |Note |
+| ------------------- |------------------------------------------| ---------------| -------------------------------|---- |
+| Figure A1           |- Excel                                   |                | 3.png                          | EEX |
+| Figure A2           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A3           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A4           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A5           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A6           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A7           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A8           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A9           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A10          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A11          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A12          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A13          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A14          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Table A1            |- SFE.R                                   | 1365-1373      | T1.xlsx                        | Various sources |
+| Table A2            |- namechp.xlsx                            | sheet Table A2 | -                              | Various sources |
+| Table A3            |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Table A4            |- chp data: consumption and probabilities |    a           | Combines data from SBD and OPS | yes |
+| Table A5            |- prices of electricity, coal, gas, oil   |    a           | AER and EEX                    | yes |
+| Table A6            |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Table A7            |- chp data: consumption and probabilities |    a           | Combines data from SBD and OPS | yes |
+| Table A8            |- prices of electricity, coal, gas, oil   |    a           | AER and EEX                    | yes |
 
 ---
 References
