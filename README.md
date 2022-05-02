@@ -82,6 +82,7 @@ Python 3.8.8 | Anaconda Navigator 2.1.1 |Spyder 4.2.5. To install all dependenci
 Excel 2018
 
 Random seeds are used at line 657-658 and 664 in R, file SFE.R
+Random seeds are used at line 185 in R, file BLP.R
 Random seeds are used at "pyblp.Integration" lines in python, files Base_Ramp.py and CF2.py
 
 The approximate time needed to reproduce the analyses on a standard desktop machine (2022) is about X days. Codes were last run on a core i7 10th generation Intel-based laptop with Windows 10 Pro version 21H1 and 16.0 GB of RAM and 476.0 GB of local storage. Computation time took X hours.
