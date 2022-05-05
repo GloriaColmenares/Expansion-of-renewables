@@ -126,7 +126,8 @@ The provided codes reproduce:
 | Figure A12          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
 | Figure A13          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
 | Figure A14          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Table A1            |- SFE.R                                   | 1125-1133      | T1.xlsx                        | Various sources |
+| Table A1            |- SFE.R                                   | 43-873         | TA1.xlsx                       | Various sources |
+|                     |- BLP.R                                   | 31-552         | TA1_blp.xlsx
 | Table A2            |- namechp.xlsx                            | sheet Table A2 | -                              | Various sources |
 | Table A3            |- I.xlsx                                  | sheet Table A3 | -                              | Various sources |
 | Table A4            |- SFE.do +                                | 26-123         | (TA4_1).cvs+ (TA4_2).cvs       |     |
