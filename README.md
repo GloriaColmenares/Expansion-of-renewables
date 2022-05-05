@@ -93,11 +93,9 @@ General Instructions to run codes for "Expansion of Intermittent Renewables: Str
 
 **************************************************************************************
 
-1. Go to file <R_paneldata> run *SFE.R* until line 1041 to obtain files sfe_one.xlsx and sfe_two.xlsx
+1. Go to file <R_paneldata> run *SFE.R* until line 1041 to obtain files sfe_one.xlsx and sfe_two.xlsx and tables
 2. Go to file <Stata> run *SFE.do* using excels in 1. as inputs
-3. Return to <R_paneldata> and run lines 1055-1186 to obtain Tables and Figures
-4. Run *R_paneldata_BLP* until line 553 to obtain file i1rv.cvs
-5. For aditional data for Table 1 run lines 563-569
+3. Run *R_paneldata_BLP* until line 553 to obtain file i1rv.cvs and tables
 
 **************************************************************************************
 Use codes in file *BLP_python_**
@@ -134,7 +132,7 @@ The provided codes reproduce:
 | Table A5            |- SFE.do                                  | 130-266        | (TA5_1,2,3,4,5,6).cvs          |     |
 | Table A6            |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
 | Table A7            |- chp data: consumption and probabilities |    a           | Combines data from SBD and OPS | yes |
-| Table A8            |- SFE.R                                   | 1136-1170      | TA8_SFE.xlsx                   |     |
+| Table A8            |- SFE.R +                                 | 1135-1170      | TA8_SFE.xlsx                   |     |
 
 ---
 References
