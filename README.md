@@ -110,20 +110,20 @@ The provided codes reproduce:
 
 | Figure/Table        | Program                                  | Lines          | Output file                    |Note |
 | ------------------- |------------------------------------------| ---------------| -------------------------------|---- |
-| Figure A1           |- Excel                                   |                | 3.png                          | EEX |
-| Figure A2           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A1           |- FA1.xlsx                                | sheet FA1      | 3.png                          | EEX |
+| Figure A2           |- FA2+FA6.xlsx                            | sheet FA2      | elec_emissions.png             | yes |
 | Figure A3           |- SFE.R                                   | 1050-1075      | FA3                            |     |
 | Figure A4           |- SFE.R                                   | 1080-1114      | FA4                            |     |
-| Figure A5           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Figure A6           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Figure A7           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Figure A8           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Figure A9           |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Figure A10          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Figure A11          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Figure A12          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Figure A13          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
-| Figure A14          |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
+| Figure A5           |- Curvature.xlsx                          |    a           |                                | yes |
+| Figure A6           |-                       |    a           |  | yes |
+| Figure A7           |-                       |    a           |  | yes |
+| Figure A8           |-                       |    a           |  | yes |
+| Figure A9           |-                       |    a           |  | yes |
+| Figure A10          |-                       |    a           |  | yes |
+| Figure A11          |-                       |    a           |  | yes |
+| Figure A12          |-                       |    a           |  | yes |
+| Figure A13          |-                       |    a           |  | yes |
+| Figure A14          |-                       |    a           |  | yes |
 | Table A1            |- SFE.R                                   | 43-873         | TA1.xlsx                       | Various sources |
 |                     |- BLP.R                                   | 31-552         | TA1_blp.xlsx
 | Table A2            |- namechp.xlsx                            | sheet Table A2 | -                              | Various sources |
