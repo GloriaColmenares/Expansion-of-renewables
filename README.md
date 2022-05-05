@@ -131,7 +131,7 @@ The provided codes reproduce:
 | Table A2            |- namechp.xlsx                            | sheet Table A2 | -                              | Various sources |
 | Table A3            |- I.xlsx                                  | sheet Table A3 | -                              | Various sources |
 | Table A4            |- SFE.do +                                | 26-123         | (TA4_1).cvs+ (TA4_2).cvs       |     |
-| Table A5            |- SFE.do                                  | 130-266        | (TA5_1,2,3,4,5,6).cvs          | yes |
+| Table A5            |- SFE.do                                  | 130-266        | (TA5_1,2,3,4,5,6).cvs          |     |
 | Table A6            |- fuel and Co2 costs                      |    a           | Combines data from various sou | yes |
 | Table A7            |- chp data: consumption and probabilities |    a           | Combines data from SBD and OPS | yes |
 | Table A8            |- SFE.R                                   | 1136-1170      | TA8_SFE.xlsx                   |     |
