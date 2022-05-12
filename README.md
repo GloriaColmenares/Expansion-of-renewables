@@ -128,7 +128,7 @@ The provided codes reproduce:
 |                     |- BLP.R                                   | 31-552         | TA1_blp.xlsx
 | Table A2            |- namechp.xlsx                            | sheet Table A2 | -                              | Various sources |
 | Table A3            |- I.xlsx                                  | sheet Table A3 | -                              | Various sources |
-| Table A4            |- SFE.do +                                | 26-123         | (TA4_1).cvs+ (TA4_2).cvs       |     |
+| Table A4            |- SFE.do + Base_Ramp_CF1.py               | 26-123 | 8-1094| (TA4_1).cvs+ (TA4_2).cvs | stats1,2,3,4,5,6.xlsx |     |
 | Table A5            |- SFE.do                                  | 130-266        | (TA5_1,2,3,4,5,6).cvs          |     |
 | Table A6            |-                                         |    a           |  | yes |
 | Table A7            |- chp data: consumption and probabilities |    a           | Combines data from SBD and OPS | yes |
