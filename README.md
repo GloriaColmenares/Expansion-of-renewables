@@ -108,18 +108,18 @@ Use codes in file *BLP_python_**
 ---
 The provided codes reproduce:
 
-| Figure/Table        | Program                                  | Lines          | Output file                    |Note |
-| ------------------- |------------------------------------------| ---------------| -------------------------------|---- |
-| Figure A1           |- FA1.xlsx                                | sheet FA1      | 3.png                          | EEX |
-| Figure A2           |- FA2+FA6.xlsx                            | sheet FA2      | elec_emissions.png             | yes |
-| Figure A3           |- SFE.R                                   | 1050-1075      | FA3                            |     |
-| Figure A4           |- SFE.R                                   | 1080-1114      | FA4                            |     |
-| Figure A5           |- BLP.R                                   | 2729-2792      | FA5_part1.xlsx                 | Location: Python>curva |
-|                     |- FA5.xlsx                                | sheet FA5      | A5.png                        | Location: R>Output |
-| Figure A6           |-                       |    a           |  | yes |
-| Figure A7           |-                       |    a           |  | yes |
-| Figure A8           |-                       |    a           |  | yes |
-| Figure A9           |-                       |    a           |  | yes |
+| Figure/Table        | Program                                  | Lines            | Output file                    |Note |
+| ------------------- |------------------------------------------| ---------------  | -------------------------------|---- |
+| Figure A1           |- FA1.xlsx                                | sheet FA1        | 3.png                          | EEX |
+| Figure A2           |- FA2+FA6.xlsx                            | sheet FA2        | elec_emissions.png             |     |
+| Figure A3           |- SFE.R                                   | 1050-1075        | FA3                            |     |
+| Figure A4           |- SFE.R                                   | 1080-1114        | FA4                            |     |
+| Figure A5           |- BLP.R                                   | 2729-2792        | FA5_part1.xlsx                 | Location: Python>curva |
+|                     |- FA5.xlsx                                | sheet FA5        | A5.png                         | Location: R>Output |
+| Figure A6           |- SFE.do + TableA4+CFs.py                 | 1-123 and 8-1095 | FA62+FA6.xlsx                  |     |
+| Figure A7           |- TableA4+CFs.py + BLP.R                  | 8-3906 and 1-2122| A7.pdf                         |     |
+| Figure A8           |- TableA4+CFs.py + BLP.R                  | 8-3906 and 1-2329| A8.pdf                         |     |
+| Figure A9           |- TableA4+CFs.py + BLP.R                  | 8-3906 and 1-2454| A9.pdf                         |     |
 | Figure A10          |-                       |    a           |  | yes |
 | Figure A11          |-                       |    a           |  | yes |
 | Figure A12          |-                       |    a           |  | yes |
