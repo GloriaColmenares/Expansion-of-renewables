@@ -114,8 +114,8 @@ The provided codes reproduce:
 | Figure A2           |- FA2+FA6.xlsx                            | sheet FA2      | elec_emissions.png             | yes |
 | Figure A3           |- SFE.R                                   | 1050-1075      | FA3                            |     |
 | Figure A4           |- SFE.R                                   | 1080-1114      | FA4                            |     |
-| Figure A5           |- BLP.R                                   |                | FA5_part1.xlsx                               | Location: Python>curva |
-|                     |- FA5.xlsx                                |            |                                | Location: R>Output |
+| Figure A5           |- BLP.R                                   | 2729-2792      | FA5_part1.xlsx                 | Location: Python>curva |
+|                     |- FA5.xlsx                                | sheet FA5      | A5.png                        | Location: R>Output |
 | Figure A6           |-                       |    a           |  | yes |
 | Figure A7           |-                       |    a           |  | yes |
 | Figure A8           |-                       |    a           |  | yes |
