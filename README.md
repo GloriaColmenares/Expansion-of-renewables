@@ -1,5 +1,5 @@
 # Expansion-of-renewables
-The code in this replication package constructs the analysis file from the 8 data sources described in the table below using R, Stata, Python, and Excel. Five main files run all of the code to generate the data for the 14 figures and 8 tables in the paper. The replicator should expect the code to run for about 6.5h+15d, running 9 BLP regressions in parallel (of a total of 27), and the extra 3 regressions with fixed effects can take in paralell up to 10 extra days. 
+The code in this replication package constructs the analysis file from the 8 data sources described in the table below using R, Stata, Python, and Excel. Five main files run all of the code to generate the data for the 14 figures and 8 tables in the paper. The replicator should expect the code to run for about 6.5h (SFE method) + 15d (BLP method), running 9 BLP regressions in parallel (of a total of 27). Plus the extra 3 regressions with fixed effects can take in paralell up to 3 extra days in parallel. 
 
 1. Data on conventional net plant installed capacities were downloaded from the Open Power System (OPS, 2018). We use data on conventional power plants for Germany (DE). Data can be downloaded from https://data.open-power-system-data.org/conventional_power_plants/2017-07-07 and https://doi.org/10.25832/conventional_power_plants/2018-12-20, select conventional_power_plants_DE.xlsx. A copy of the data is provided as part of this archive. The data are in the public domain.
 Raw datafiles: conventional_power_plants_DE_17.xlsx and conventional_power_plants_DE_18.xlsx. When the net capacity is lower than production, we use maximum production values from the period of analysis from the Strommarktdaten (SMARD, 2020***). To calculate the total capacity in the market, we use data from https://www.smard.de/en. Raw datafile: Installed_generation_capacity_201701010000_201812312359.xlsx
@@ -89,21 +89,19 @@ The approximate time needed to reproduce the analyses on a standard desktop mach
 
 
 ---
-General Instructions to run codes for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
+General Instructions to run codes (in accumulative manner) for "Expansion of Intermittent Renewables: Strategies, pass-through costs, and welfare distribution"
 
 **************************************************************************************
 
-1. Go to file <R_paneldata> run *SFE.R* until line 1041 to obtain files sfe_one.xlsx and sfe_two.xlsx and tables
-2. Go to file <Stata> run *SFE.do* using excels in 1. as inputs
-3. Run *R_paneldata_BLP* until line 553 to obtain file i1rv.cvs and tables
+1. Go to file <R_paneldata> and run *SFE.R* until line 1038 to obtain files sfe_one.xlsx and sfe_two.xlsx and tables
+2. Go to file <Stata> and run *SFE.do* using excels in 1. as inputs
+3. Run *R_paneldata_BLP* until line 2003 to obtain file i1rv.cvs, i1rv25.cvs, i1rv60.cvs, i1rv100.cvs
 
 **************************************************************************************
-Use codes in file *BLP_python_**
 
-7. Run each case separately until line 2376 (each case takes around 20 hours)
-8. Go to *BLP_python_cf2* and run the entire code, each case separately (similar to step 7)
-9. Go to *BLP_python* and run lines 2378-2426 to gather all results in files pt.xlsx, cs.xlsx, curva.xlsx, ps.csv
-10. Return to *R_paneldata_BLP* and run lines 576-946 using files in step 9 to obtain Tables and Figures
+4. Go to file <Python> and run *TableA4+CFs.py* each regression in parallel (each case takes around 20 hours) to obtain files pt.xlsx, cs.xlsx, curva.xlsx, ps.csv.        Replace (...) with your own directory route.
+5. With files in 1. go to *BLP.py* and continue running from 2012 to 2796 (to obtain tables and figures).
+6. To get additional regressions go to file <Python> and run codes *TableA6.py* and *tc.py*, each regression in parallel to extra results in table A6 and A9.
 
 ---
 The provided codes reproduce the following output files which are found inside the route Replication > R_paneldata > Output :
