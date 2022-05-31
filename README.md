@@ -106,32 +106,32 @@ Use codes in file *BLP_python_**
 10. Return to *R_paneldata_BLP* and run lines 576-946 using files in step 9 to obtain Tables and Figures
 
 ---
-The provided codes reproduce:
+The provided codes reproduce the following output files which are found inside the route Replication > R_paneldata > Output :
 
-| Figure/Table        | Program                                  | Lines                              | Output file                    |Note |
-| ------------------- |------------------------------------------| ---------------                    | -------------------------------|---- |
-| Figure A1           |- FA1.xlsx                                | sheet FA1                          | 3.png                          | EEX |
-| Figure A2           |- FA2+FA6.xlsx                            | sheet FA2                          | elec_emissions.png             |     |
-| Figure A3           |- SFE.R                                   | 1050-1075                          | FA3                            |     |
-| Figure A4           |- SFE.R                                   | 1080-1114                          | FA4                            |     |
-| Figure A5           |- BLP.R                                   | 2729-2792                          | FA5_part1.xlsx                 | Location: Python>curva |
-|                     |- FA5.xlsx                                | sheet FA5                          | A5.png                         | Location: R>Output |
-| Figure A6           |- SFE.do + TableA4+CFs.py                 | 1-123 and 8-1095                   | FA62+FA6.xlsx                  |     |
-| Figure A7           |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2122                    | A7.pdf                         |     |
-| Figure A8           |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2329                    | A8.pdf                         |     |
-| Figure A9           |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2454                    | A9.pdf                         |     |
-| Figure A10          |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2558                    | A10.pdf                        |     |
-| Figure A11          |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2130                    | A11.pdf                        |     |
-| Figure A12          |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2337                    | A12.pdf                        |     |
-| Figure A13          |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2643                    | A13.pdf                        |     |
-| Figure A14          |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2726                    | A14.pdf                        |     |
-| Table A1            |- SFE.R                                   | 43-873                             | TA1.xlsx                       | Various sources |
-|                     |- BLP.R                                   | 31-552                             | TA1_blp.xlsx                   |     |
-| Table A2            |- namechp.xlsx                            | sheet Table A2                     | -                              | Various sources |
-| Table A3            |- I.xlsx                                  | sheet Table A3                     | -                              | Various sources |
-| Table A4            |- SFE.do + Base_Ramp_CF1.py               | 26-123 | 8-1094                    | (TA4_1).cvs+ (TA4_2).cvs | stats1,2,3,4,5,6.xlsx |     |
+| Figure/Table        | Program                                  | Lines                              | Output file                       |Note |
+| ------------------- |------------------------------------------| ---------------                    | ----------------------------------|---- |
+| Figure A1           |- FA1.xlsx                                | sheet FA1                          | 3.png                             | EEX |
+| Figure A2           |- FA2+FA6.xlsx                            | sheet FA2                          | elec_emissions.png                |     |
+| Figure A3           |- SFE.R                                   | 1050-1075                          | FA3                               |     |
+| Figure A4           |- SFE.R                                   | 1080-1114                          | FA4                               |     |
+| Figure A5           |- BLP.R                                   | 2729-2792                          | FA5_part1.xlsx                    | Location: Python>curva |
+|                     |- FA5.xlsx                                | sheet FA5                          | A5.png                            |  |
+| Figure A6           |- SFE.do + TableA4+CFs.py                 | 1-123 and 8-1095                   | FA62+FA6.xlsx                     |     |
+| Figure A7           |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2122                    | A7.pdf                            |     |
+| Figure A8           |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2329                    | A8.pdf                            |     |
+| Figure A9           |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2454                    | A9.pdf                            |     |
+| Figure A10          |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2558                    | A10.pdf                           |     |
+| Figure A11          |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2130                    | A11.pdf                           |     |
+| Figure A12          |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2337                    | A12.pdf                           |     |
+| Figure A13          |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2643                    | A13.pdf                           |     |
+| Figure A14          |- TableA4+CFs.py + BLP.R                  | 8-3906 + 1-2726                    | A14.pdf                           |     |
+| Table A1            |- SFE.R                                   | 43-873                             | TA1.xlsx                          | Various sources |
+|                     |- BLP.R                                   | 31-552                             | TA1_blp.xlsx                      | Various sources |
+| Table A2            |- namechp.xlsx                            | sheet Table A2                     | -                                 | Location: R_paneldata |
+| Table A3            |- I.xlsx                                  | sheet Table A3                     | -                                 | Location: R_paneldata |
+| Table A4            |- SFE.do + Base_Ramp_CF1.py               | 26-123 + 8-1094                    | (TA4_1).cvs+ (TA4_2).cvs + stats1,2,3,4,5,6.xlsx |     |
 | Table A5            |- SFE.do                                  | 130-266                            | (TA5_1,2,3,4,5,6).cvs             |     |
-| Table A6            |- Base_Ramp_CF1.py +  Table_A6.py         | 8-567 | 8-1075                     | stats4,5,6,22,23,24,25,26,27.xlsx |  |
+| Table A6            |- Base_Ramp_CF1.py +  Table_A6.py         | 8-567 + 8-1075                     | stats4,5,6,22,23,24,25,26,27.xlsx |  |
 | Table A7            |- ramp.xlsx  	                           | sheet Table A7                     | ramp.xlsx                         |  |
 | Table A8            |- SFE.R + TableA4+CFs.py + BLP.R          | 1135-1170 and 8-3906 and 2343- 2380| TA8_SFE.xlsx                      |     |
 
