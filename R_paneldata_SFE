@@ -4,7 +4,7 @@
 # Period 02.01.2017 - 30.09.2018
 # Author : GC
 # Created: 29.05.20
-# Last date updated: 23.08.2021
+# Last date updated: 02.05.2022
 
 #####################################################################################
 #Input files:
@@ -24,21 +24,22 @@
 #2. uno.Rdata         - R data to run SFE method (1)
 #3. dos.Rdata         - R data to run SFE method (2)
 #4. SFE_one.xlsx      - after SFE, excel for panel data to run SFE regression in Stata (1) 
-#5. SFE_two.xlsx      - after SFE, excel for panel data to run SFE regression in Stata (2)
-#6. T2_SFE.xlsx       - Table 2 of the paper
-#7. T1.xlsx           - Table 1 of the paper
-#8. F2.pdf            - Figure 2 of the paper
-#9. F3.pdf            - Figure 3 of the paper
-
+#5. SFE_two.xlsx      - after SFE, excel for panel data to run SFE regression in Stata (2) 
+#6. TA1.csv            - Table 5 of the paper
+#7. TA8.xlsx           - Table 1 of the paper
+#8. FA2.pdf           - Figure 2 of the paper
+#9. FA3.pdf           - Figure 3 of the paper
 
 #####################################################################################
 
-#cleaning the entire environment
-remove(list = ls())
+#Package to update R
+#install.packages("installr")
+#library(installr)
+#updateR()
 
-if(FALSE){ 
-  install.packages('dplyr')
-  library('dplyr')
+
+#if(FALSE){ 
+
   install.packages('tidyverse')
   library('tidyverse')
   library(lubridate)
@@ -52,15 +53,18 @@ if(FALSE){
   library(tibbletime)
   install.packages("writexl")
   library(writexl)
-}
+#}
 
-
+#cleaning the entire environment
+remove(list = ls())
+  
+  
 ###########################################################################################
 #CAPACITIES multiuse file
 #Reading capacities from AURORA, Open Power Project and SMARD dataset (accesed on 02.12.2019).
 #https://www.smard.de/home/wiki-article/446/636
-
-setwd("C:\\Users\\...\\Replication\\R_paneldata\\SFE") 
+p0 <- proc.time()[3]
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) #directory where the R script is located
 namemc <- read_excel("namemchp.xlsx", col_types = c("text", 
                                                   "numeric", "numeric", "numeric", "numeric", 
                                                   "numeric", "numeric", "numeric", "numeric", "numeric", 
@@ -90,7 +94,7 @@ namemc <- read_excel("namemchp.xlsx", col_types = c("text",
                                                   "numeric", "numeric", "numeric", "numeric", "numeric", 
                                                   "numeric", "numeric", "numeric", "numeric", "numeric", 
                                                   "numeric", "numeric", "numeric", "numeric", "numeric",
-                                                  "numeric", "numeric"))
+                                                  "numeric"))
 
 
 #extract first 3rows
@@ -101,13 +105,12 @@ datec <- namemc1[,c(1)]
 #PROB OUTAGE - START PROCESS do this once to obtain prob.cvs file or skip to MC CALCULATION
 ###########################################################################################
 #Separating outage blocks in hours (execution time: around 9min)
-
 dat <- data.frame(read_excel("tout.xlsx"))
 out1 <- dat[,-c(1:4,6:7)]
 
 #########################
 #outage in hours - start
-p0 <- proc.time()[3] 
+ 
 start <- as_datetime('2017-01-02')
 end <- as_datetime('2018-10-01')
 times <- seq.POSIXt(start, end, by = 'hour')
@@ -127,8 +130,8 @@ df[, time_occupied := (as.double(difftime(min(.SD[,c(end, end_time)]), max(.SD[,
 
 df[order(fof), .(fof, start, end, time_occupied)]
 df$fofs <- (df[,df[,"fof"]*abs(df[,"time_occupied"])])/60
-print(proc.time()[3]-p0)
-rm(dat, df_times, end, end_time, fof, p0,start, start_time, times, unit)
+
+rm(dat, df_times, end, end_time, fof, start, start_time, times, unit)
 #########################
 #outage in hours - end
 
@@ -153,7 +156,7 @@ out5 <- setDT(namemc1)[outd2, (out4) := Map(`-`, mget(out4),
                              mget(paste0("i.", out4))), on =.(Date)]
 #checking negative numbers
 col2 <- out5[,c(1:2)]
-out6 <- out5[, c(3:144)]
+out6 <- out5[, c(3:141)]
 out6[out6 > 0] <- 0
 out7 <- cbind.data.frame(col2, out6)
 rm(out6, col2)
@@ -173,7 +176,7 @@ t3 <- namemc[-c(1:4),-c(1:2)] - data1[-c(1:3),-c(1:2)]
 first3rm <- as.numeric(first3r[-c(2:3),-c(1:2)])
 
 t4 <- rbind.data.frame(first3rm, t3)
-t5 <- data.frame(t4[,-c(121:144)])
+t5 <- data.frame(t4[,-c(118:139)])
 
 
 fof1 <- t5[,t5[1,]==6]
@@ -182,21 +185,19 @@ fof3 <- t5[,t5[1,]==10]
 Huckingenf <- t5[,t5[1,]==13]
 fof5 <- t5[,t5[1,]==14]
 fof6 <- t5[,t5[1,]==15]
-Walheimf <- t5[,t5[1,]==16]
-fof7 <- cbind.data.frame(fof1, fof2, Huckingenf, fof3, fof5, fof6, Walheimf)
+fof7 <- cbind.data.frame(fof1, fof2, Huckingenf, fof3, fof5, fof6)
 
 
-fof7$foil <- rowSums(fof7[,fof7[1,]==6,],fof7[,fof7[1,]==16,] )
+fof7$foil <- rowSums(fof7[,fof7[1,]==6,] )
 fof7$fcoal <- rowSums(fof7[,fof7[1,]==9,])
 fof7$fgas1 <- rowSums(fof7[,fof7[1,]==10,])
 fof7$fgas2 <- rowSums(fof7[,fof7[1,]==14,])
 fof7$fgas3 <- rowSums(fof7[,fof7[1,]==15,])
-fof7$fgas <- rowSums(fof7[,c(79:81)])
-fof7$fskonv <- fof7$Walheimf
+fof7$fgas <- rowSums(fof7[,c(78:80)])
 
-fof8 <- data.frame(fof7$foil,fof7$fcoal, fof7$fgas, fof7$fskonv)
-colnames(fof8) <- c("foil", "fcoal", "fgas", "fskonv")
-rm(t3, t4, t5, fof1, fof2, fof3, fof5, fof6, fof7, first3rm, Huckingenf, Walheimf)
+fof8 <- data.frame(fof7$foil,fof7$fcoal, fof7$fgas)
+colnames(fof8) <- c("foil", "fcoal", "fgas")
+rm(t3, t4, t5, fof1, fof2, fof3, fof5, fof6, fof7, first3rm, Huckingenf)
 
 #%fofs
 bb <- data.frame(namemc[-c(2:4),])
@@ -207,23 +208,21 @@ bb$foil3 <- bb[,bb[1,]==25,]
 bb$foil <- rowSums(bb[,c("foil1", "foil2", "foil3")])
 bb$fcoal <- bb$Steinkohle
 bb$fgas <- bb$Erdgas
-bb$fskonv <- bb$Walheim
-bb1 <- bb[,c(148:151)]
+bb1 <- bb[,c(145:147)]
 
 #calculating the %fof
 pf <- fof8[-c(1),] / bb1[-c(1),]
-#skonv no va
-pf1 <- pf[,-c(4)]
+
 #verifying
-pf1[pf1 < 0] <- 0
-pf11 <- 1-pf1[,]
+pf[pf < 0] <- 0
+pf11 <- 1-pf[,]
 
 cols2 <- namemc[-c(1:4),c(1:2)]
 pf2 <- cbind.data.frame(cols2, pf11)
 
 write.csv(pf2, "prob2.csv")
 
-rm(bb, bb1, cols2, data1, fof8, pf, pf1, pf11, pf2)
+rm(bb, bb1, cols2, fof8, pf, pf1, pf11, pf2)
 
 ###########################################################################################
 #PROB OUTAGE - END PROCESS 
@@ -234,12 +233,8 @@ rm(bb, bb1, cols2, data1, fof8, pf, pf1, pf11, pf2)
 #############################################################################################
 
 #Adding chp profiles to capacities
-
-setwd("C:\\Users\\...\\Replication\\R_paneldata") 
 namemc <- data.frame(namemc)
-chp <- read_excel("chp.xlsx", col_types = c("text", 
-                                                    "numeric", "numeric"
-                                                    ))
+chp <- read_excel("chp.xlsx", col_types = c("text","numeric", "numeric"))
 chp1 <- data.frame(chp[3])
 datm1 <- cbind.data.frame(namemc[-c(4),], chp1)
 datm1 <- datm1[-c(2:3),]
@@ -250,11 +245,10 @@ dat3 <- datm1[,datm1[1,]==10]
 Huckingen <- datm1[,datm1[1,]==13]
 dat5 <- datm1[,datm1[1,]==14]
 dat6 <- datm1[,datm1[1,]==15] 
-Walheim <- datm1[,datm1[1,]==16]
-rest <- datm1[c(133:142)] 
-chp2 <- datm1[c(143)] 
+rest <- datm1[c(132:141)] 
+chp2 <- datm1[c(142)] 
 
-datm2 <- cbind.data.frame(dat1, dat2, Huckingen, dat3, dat5, dat6, Walheim, rest, chp2)
+datm2 <- cbind.data.frame(dat1, dat2, Huckingen, dat3, dat5, dat6, rest, chp2)
 
 #keeping techs to match the transposed data later
 tech <- datm1[c(1),]
@@ -262,11 +256,14 @@ tech1 <- data.frame(stack(tech))
 tech1 <- tech1[-c(1:2), c(2,1)]
 #removing the excess
 datm2 <- datm2[-c(1),]
-rm(dat1,dat2, dat3, dat5, dat6, rest, Huckingen, Walheim, chp, chp1, chp2)
+rm(dat1,dat2, dat3, dat5, dat6, rest, Huckingen, chp, chp1, chp2)
 #transpose cap for later merit order construction
 datm2 <- data.frame(stack(datm2))
+
+summary(datm2)
+
 #adding time in numbers
-time <- rep(c(1:15288),85)
+time <- rep(c(1:15288),86)
 datm3 <- cbind.data.frame(datm2, time)
 #reordering
 datm3 <- datm3[, c(2,3,1)]
@@ -281,18 +278,16 @@ rm(datm1, datm2, datm3, tech, tech1)
 ###########################################################################################
 #OUTAGE PROBABILITIES
 #Use this when the file prob2 was already created
-setwd("C:\\Users\\...\\Replication\\R_paneldata\\SFE") 
-
 prob <- read_csv("prob2.csv")
 
 prob <- prob[,-c(1)]
 
 pr <- namemc[-c(2:4),-c(1:2)]
-pr[c(2:15288), c(1:140)] <- 0
+pr[c(2:15288), c(1:139)] <- 0
 
 cinx <- which( pr[1,] == "9" | pr[1,] == "8" | pr[1,] == "17" | pr[1,] == "18") #coal index
 ginx <- which( pr[1,] == "14" | pr[1,] == "15" | pr[1,] == "10" | pr[1,] == "19"| pr[1,] == "20"| pr[1,] == "21"| pr[1,] == "22") #gas index         
-oinx <- which( pr[1,] == "13" | pr[1,] == "16" | pr[1,] == "6" | pr[1,] == "23"| pr[1,] == "24"| pr[1,] == "25"| pr[1,] == "26") #oil index          
+oinx <- which( pr[1,] == "13" | pr[1,] == "6" | pr[1,] == "23"| pr[1,] == "24"| pr[1,] == "25"| pr[1,] == "26") #oil index          
 
 prt <- pr[c(1),]
 pr <- pr[-c(1),]
@@ -313,19 +308,18 @@ pr3 <- pr[,pr[1,]==10]
 Huckingen <- pr[,pr[1,]==13]
 pr5 <- pr[,pr[1,]==14]
 pr6 <- pr[,pr[1,]==15]
-Walheim <- pr[,pr[1,]==16]
-rest <- pr[c(131:140)] 
-gaschp <- pr[c(141)]
+rest <- pr[c(130:139)] 
+gaschp <- pr[c(140)]
 
-prm1 <- cbind( pr1, pr2, Huckingen, pr3, pr5, pr6, Walheim, rest, gaschp)
+prm1 <- cbind( pr1, pr2, Huckingen, pr3, pr5, pr6, rest, gaschp)
 prm1 <- prm1[-c(1),] 
 
-rm(pr1,pr2, pr3, pr5, pr6, rest, Huckingen, Walheim, gaschp, cinx, ginx, oinx)
+rm(pr1,pr2, pr3, pr5, pr6, rest, Huckingen, gaschp, cinx, ginx, oinx)
 prm2 <- stack(prm1)
 rm(prm1)
 prm3 <- prm2[, c(2,1)]
 ##combining the indexes plant name and time
-time <- rep(c(1:15288),85)
+time <- rep(c(1:15288),86)
 prm4 <- cbind.data.frame(prm3, time)
 prm4$ix <- with(prm4, paste(ind, time))
 prm4 <- prm4[,-c(1,3)]
@@ -338,8 +332,7 @@ datm44 <- merge(datm4, prm4, by="ix")
 rm(datm4, pr, prm4, prob, prt)
 
 #COSTS------------------------------------------------------------------------------------
-
-setwd("C:\\Users\\...\\Replication\\R_paneldata") 
+#fcost sheet -fuel prices*HR
 b <- data.frame(read_excel("Marginalcosts.xlsm", sheet="Tab1"))
 b1 <- b[,b[1,]==6]
 b2 <- b[,b[1,]==9]
@@ -347,13 +340,12 @@ b3 <- b[,b[1,]==10]
 Huckingen <- b[,b[1,]==13]
 b5 <- b[,b[1,]==14]
 b6 <- b[,b[1,]==15]
-Walheim <- b[,b[1,]==16]
-rest <- b[c(121:130)] 
-chp <- b[c(131)] 
+rest <- b[c(120:129)] 
+chp <- b[c(130)] 
 
-bm1 <- cbind.data.frame(b1, b2, Huckingen, b3, b5, b6, Walheim, rest,chp)
+bm1 <- cbind.data.frame(b1, b2, Huckingen, b3, b5, b6, rest,chp)
 bm1 <- bm1[-c(1,2),]
-rm(b, b1,b2, b3, b5, b6, rest, Huckingen, Walheim, chp)
+rm(b, b1,b2, b3, b5, b6, rest, Huckingen, chp)
 ##transpose
 bm2 <- data.frame(stack(bm1))
 rm(bm1)
@@ -372,7 +364,7 @@ datm5 <- merge(datm44, bm4, by="ix")
 rm(bm4, datm44)
 
 
-#CO2prices 
+#CO2prices cocos sheet -co2 prices*HR*emissions
 f <- data.frame(read_excel("Marginalcosts.xlsm", sheet="Tab2"))
 f1 <- f[,f[1,]==6]
 f2 <- f[,f[1,]==9]
@@ -380,13 +372,12 @@ f3 <- f[,f[1,]==10]
 Huckingen <- f[,f[1,]==13]
 f5 <- f[,f[1,]==14]
 f6 <- f[,f[1,]==15]
-Walheim <- f[,f[1,]==16]
-rest <- f[c(121:130)] 
-chp <- f[c(131)]
+rest <- f[c(120:129)] 
+chp <- f[c(130)]
 
-fm1 <- cbind.data.frame(f1, f2, Huckingen, f3, f5, f6, Walheim, rest, chp)
+fm1 <- cbind.data.frame(f1, f2, Huckingen, f3, f5, f6, rest, chp)
 fm1 <- fm1[-c(1,2),]
-rm(f, f1,f2, f3, f5, f6, rest, Huckingen, Walheim, chp)
+rm(f, f1,f2, f3, f5, f6, rest, Huckingen, chp)
 ##transpose
 fm2 <- data.frame(stack(fm1))
 rm(fm1)
@@ -407,12 +398,16 @@ rm(fm4, datm5)
 #RESIDUAL DEMAND-----------------------------------------------------------------------------
 #### Reading realisierte Stromverbrauch to obtain the residual demand
 ## total demand is equal to Generation (ff+ren+imports) - (exports+pump)
-setwd("C:\\Users\\...\\R_paneldata\\SFE") 
-demandc <- data.frame(read_delim("Realisierter_Stromverbrauch_201701020000_201809302345.csv", ";", escape_double = FALSE, 
+
+demandc <- data.frame(read_delim("Realisierter_Stromverbrauch_201701020000_201809302345.csv"
+                                 , ";", escape_double = FALSE, 
                                  locale = locale(decimal_mark = ","), 
                                  trim_ws = TRUE))
+
+
+demandc$Gesamt.MWh.<- as.numeric(gsub(",", ".", gsub("\\.", "", demandc$Gesamt.MWh.)))
+
 demandc <- demandc[-c(28809:28812),] #day 29.10.2017 duplicate on 02:00
-summary(demandc)
 demandc$Datum <- as.Date(demandc$Datum, "%d.%m.%Y")  
 demandc$date <- as.POSIXct(paste(demandc$Datum, demandc$Uhrzeit), format="%Y-%m-%d %H:%M:%S", tz='utc')
 demandc <- demandc %>% select(date, everything())
@@ -435,10 +430,12 @@ rm(dsmardc1, dsmardc2, ends)
 
 ## Data from SMARD- accesed on 11.06.2020 realisierte Stromerzeugung (RE)
 ## https://www.smard.de/home/wiki-article/446/636
-## Photovoltaik 7976 wa (-)  but it is zero
 rsmard <- data.frame(read_delim("Realisierte_Erzeugung_201701020000_201809302345.csv", ";", escape_double = FALSE, 
                                 locale = locale(decimal_mark = ","), 
                                 trim_ws = TRUE))
+rsmard[14] <- sapply(rsmard[14], function(v) {as.numeric(gsub("\\.","", as.character(v)))})
+
+
 rsmard <- rsmard[-c(28809:28812),] #day 29.10.2017 duplicate on 02:00
 rsmard$Datum <- as.Date(rsmard$Datum, "%d.%m.%Y")  
 rsmard$date <- as.POSIXct(paste(rsmard$Datum, rsmard$Uhrzeit), format="%Y-%m-%d %H:%M:%S", tz='utc')
@@ -465,6 +462,7 @@ Resdm5$must <- rowSums(Resdm5[, c(3:10)])
 Resdm5$rd <- Resdm5$demand  - Resdm5$must
 #renewables 
 Resdm5$ren <- Resdm5$Wind.Offshore.MWh. + Resdm5$Wind.Onshore.MWh. + Resdm5$Photovoltaik.MWh.
+write_xlsx(Resdm5, "resdm5.xlsx")
 
 time <- c(1:nrow(Resdm5))
 rd1 <- cbind.data.frame(Resdm5$rd, time)
@@ -472,20 +470,19 @@ colnames(rd1) <- c( "rd", 'time')
 
 datm7 <- merge(datm6, rd1, by="time")
 
-setwd("C:\\Users\\...\\Replication\\R_paneldata") 
 #adding fuel prices and electricity prices
 h <- data.frame(read_excel("inst.xlsx"))
 datm8 <- merge(datm7, h, by="time")
 rm(datm6, datm7, rd1, dsmardc3, rsmardc2, h)
 
-#write_xlsx(Resdm5, "resdm5.xlsx")
+
 
 #adding probabilities chp---------------------------------------------------------
 prob2 <- data.frame(read_excel("chp.xlsx", sheet="probchp"))
 prob2 <- prob2[,-c(1)]
 
 pr <- namemc[-c(1:3),-c(1:2)]
-pr[c(2:15289), c(1:140)] <- 1
+pr[c(2:15289), c(1:139)] <- 1
 
 cchp <- which( pr[1,] == "53") #coal index
 gchp <- which( pr[1,] == "55") #gas index         
@@ -505,19 +502,18 @@ pr3 <- pr[,pr[1,]==10]
 Huckingen <- pr[,pr[1,]==13]
 pr5 <- pr[,pr[1,]==14]
 pr6 <- pr[,pr[1,]==15]
-Walheim <- pr[,pr[1,]==16]
-rest <- pr[c(131:140)] 
-gaschp <- pr[c(141)]
+rest <- pr[c(130:139)] 
+gaschp <- pr[c(140)]
 
-prm1 <- cbind( pr1, pr2, Huckingen, pr3, pr5, pr6, Walheim, rest, gaschp)
+prm1 <- cbind( pr1, pr2, Huckingen, pr3, pr5, pr6, rest, gaschp)
 prm1 <- prm1[-c(1),] 
 
-rm(pr1,pr2, pr3, pr5, pr6, rest, Huckingen, Walheim, gaschp, cchp, gchp)
+rm(pr1,pr2, pr3, pr5, pr6, rest, Huckingen, gaschp, cchp, gchp)
 prm2 <- stack(prm1)
 rm(prm1)
 prm3 <- prm2[, c(2,1)]
 ##combining the indexes plant name and time
-time <- rep(c(1:15288),85)
+time <- rep(c(1:15288),86)
 prm4 <- cbind.data.frame(prm3, time)
 prm4$ix <- with(prm4, paste(ind, time))
 prm4 <- prm4[,-c(1,3)]
@@ -540,11 +536,10 @@ wind5 <- wind2[,wind2[1,]==10]
 Huckingen <- wind2[,wind2[1,]==13]
 wind6 <- wind2[,wind2[1,]==14]
 wind7 <- wind2[,wind2[1,]==15]
-Walheim <- wind2[,wind2[1,]==16]
-rest <- wind2[c(119:128)] 
-gaschp <- wind2[c(129)]
+rest <- wind2[c(118:127)] 
+gaschp <- wind2[c(128)]
 
-windm1 <- cbind( wind3, wind4, wind5, Huckingen,wind6, wind7,Walheim, rest, gaschp)
+windm1 <- cbind( wind3, wind4, wind5, Huckingen,wind6, wind7, rest, gaschp)
 windm1 <- windm1[-c(1),] 
 
 windm2<- data.frame(stack(windm1))
@@ -556,7 +551,7 @@ windm3 <- windm3[,-c(2,3)]
 colnames(windm3) <- c( "wind", "ix")
 ##adding tech matching to ix
 datm10 <- merge(datm9, windm3, by="ix")
-rm(wind2, wind3, wind4, wind5, wind6,wind7,wind, windm1, windm2, windm3, rest, gaschp, Huckingen,Walheim, datm9)
+rm(wind2, wind3, wind4, wind5, wind6,wind7,wind, windm1, windm2, windm3, rest, gaschp, Huckingen, datm9)
 
 
 #--------------------------------------------------------------------------------------------
@@ -570,11 +565,10 @@ solar5 <- solar2[,solar2[1,]==10]
 Huckingen <- solar2[,solar2[1,]==13]
 solar6 <- solar2[,solar2[1,]==14]
 solar7 <- solar2[,solar2[1,]==15]
-Walheim <- solar2[,solar2[1,]==16]
-rest <- solar2[c(119:128)] 
-gaschp <- solar2[c(129)]
+rest <- solar2[c(118:127)] 
+gaschp <- solar2[c(128)]
 
-solarm1 <- cbind( solar3, solar4, solar5, Huckingen,solar6, solar7,Walheim, rest, gaschp)
+solarm1 <- cbind( solar3, solar4, solar5, Huckingen,solar6, solar7, rest, gaschp)
 solarm1 <- solarm1[-c(1),] 
 
 solarm2<- data.frame(stack(solarm1))
@@ -586,12 +580,10 @@ solarm3 <- solarm3[,-c(2,3)]
 colnames(solarm3) <- c( "solar", "ix")
 ##adding tech matching to ix
 datm11 <- merge(datm10, solarm3, by="ix")
-rm(solar2, solar3, solar4, solar5, solar6,solar7,solar, solarm1, solarm2, solarm3, rest, gaschp, Huckingen,Walheim, datm10)
-
+rm(solar2, solar3, solar4, solar5, solar6,solar7,solar, solarm1, solarm2, solarm3, rest, gaschp, Huckingen, datm10)
 
 ###################################################################################################
-#NO RAMPING CASE----------------------------------------------------------------------------------
-#Table 3 data for regression (1)
+#BASE REGRESSION----------------------------------------------------------------------------------
 
 datm11$tc <- datm11$fcost + datm11$ghgc 
 
@@ -602,7 +594,7 @@ summary(sfe1)
 colnames(sfe1)[1]<- "plant"
 
 library(plyr)
-a <- ddply(sfe1,.(time,rd),nrow) #verifying that each time has 87 plants
+fb <- ddply(sfe1,.(time,rd),nrow) #verifying that each time has 87 plants
 #aqui me quede, cambiando el tiempo para que corra el algoritmo primero ordenando
 sfe2 <- sfe1
 sfe2$id <- sub("\\s+[^ ]+$", '', sfe1$plant)
@@ -611,7 +603,7 @@ sfe2 <- sfe2 %>% arrange(id, time)
 #detach(package:plyr)
 real_time <- data.frame(sfe2$time)
 
-time2 <- rep(c(1:13862),85)
+time2 <- rep(c(1:nrow(fb)),86)
 sfe2$time <- time2
 
 rm(sfe1, time2)
@@ -648,7 +640,7 @@ ggplot() +
 
 
 R = 50
-Obs = 13862
+Obs = nrow(fb)
 stamp = c(1:Obs)
 
 #seeds
@@ -656,7 +648,7 @@ a = 301
 b = a+R
 
 #--------------------------------------------------------------------------------------------
-p0 <- proc.time()[3] #5hours
+#p0 <- proc.time()[3] #5hours
 set.seed(a:b) # R times
 lista <- list()
 for(k in 1:R){
@@ -669,6 +661,7 @@ for(k in 1:R){
   datalist = list()
   for(i in 1:Obs){
     if (nrow(datv)==0) g
+    ##check this to reduce time of loop
     ZZ <- data.frame(datv[which(datv["time"] == i ),])
     WW <- data.frame(ZZ[order(ZZ$tc),])
     YY <- WW %>% mutate(cumsum = cumsum(capp2))
@@ -680,21 +673,23 @@ for(k in 1:R){
   
   lista[[k]] <- bd
 }
-print(proc.time()[3]-p0)
+#print(proc.time()[3]-p0)
 
-rm(cross, datalist, WW, YY, ZZ,i,p0, k, prb,a,b)
+rm(cross, datalist, WW, YY, ZZ,i, k, prb,a,b)
 
-save(lista, file="uno.RData")
+Output <- dir.create("Output")
+
+save(lista, file="Output/uno.RData")
 #--------------------------------------------------------------------------------------------
-setwd("C:\\Users\\...\\R_paneldata\\SFE") 
-load("uno.RData")
+ 
+#load("uno.RData")
 
 
 #--------------------------------------------------------------------------------------------
 #Gathering the averages and constructing the panel data
-
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) #directory where the R script is located
 R = 50
-Obs = 13862
+Obs = nrow(fb)
 stamp = c(1:Obs)
 #fcosts
 suma1 = list()
@@ -801,7 +796,7 @@ detach(sfe_one)
 
 rm(a, aa, coa, coal, gas, oil, sfe1, uno)
 
-write_xlsx(sfe_one, "sfe_one.xlsx")
+write_xlsx(sfe_one, "Output/sfe_one.xlsx")
 
 #HISTOGRAMS MC-------------------------------------------------------
 #histogram
@@ -811,12 +806,10 @@ ggplot(data=sfe_one, aes(mumc)) +
   scale_y_continuous(breaks = seq(0, 700, 200), lim = c(0, 700))
 
 
-
-
 ###################################################################################################
 #RAMPING CASE----------------------------------------------------------------------------------
-#Table 3 data for regression (2)
 
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) #directory where the R script is located
 ##ramping costs
 b <- data.frame(read_excel("ramp.xlsx"))
 
@@ -827,13 +820,12 @@ b3 <- b[,b[1,]==10]
 Huckingen <- b[,b[1,]==13]
 b5 <- b[,b[1,]==14]
 b6 <- b[,b[1,]==15]
-Walheim <- b[,b[1,]==16]
-rest <- b[c(121:130)] 
-gaschp <- b[c(131)] 
+rest <- b[c(120:129)] 
+gaschp <- b[c(130)] 
 
-bm1 <- cbind.data.frame(b1, b2, Huckingen, b3, b5, b6, Walheim, rest,gaschp)
+bm1 <- cbind.data.frame(b1, b2, Huckingen, b3, b5, b6, rest,gaschp)
 bm1 <- bm1[-c(1,2),]
-rm(b, b1,b2, b3, b5, b6, rest, Huckingen, Walheim, gaschp)
+rm(b, b1,b2, b3, b5, b6, rest, Huckingen, gaschp)
 ##transpose
 bm2 <- data.frame(stack(bm1))
 bm3 <- cbind.data.frame(bm2,time)
@@ -844,7 +836,7 @@ bm3 <- bm3[,-c(2,3)]
 colnames(bm3) <- c( "rampc", "ix")
 ##adding tech matching to ix
 datm11r <- merge(datm11, bm3, by="ix")
-rm(bm2, bm3, bm4, bm5, bm6,bm7,bm, bm1, bm2, bm3, rest, gaschp, Huckingen,Walheim, datm10)
+rm(bm2, bm3, bm4, bm5, bm6,bm7,bm, bm1, bm2, bm3, rest, gaschp, Huckingen, datm10)
 
 ##sumando el costo del combustible mas el costo del carbono
 datm11r$tcr <- datm11r$fcost + datm11r$ghgc + datm11r$rampc
@@ -857,7 +849,7 @@ summary(sfe1r)
 colnames(sfe1r)[1]<- "plant"
 
 library(plyr)
-ar <- ddply(sfe1r,.(time,rd),nrow) #verifying that each time has 87 plants
+fr <- ddply(sfe1r,.(time,rd),nrow) #verifying that each time has 86 plants
 #aqui me quede, cambiando el tiempo para que corra el algoritmo primero ordenando
 sfe2r <- sfe1r
 sfe2r$id <- sub("\\s+[^ ]+$", '', sfe1r$plant)
@@ -866,17 +858,27 @@ sfe2r <- sfe2r %>% arrange(id, time)
 #detach(package:plyr)
 real_time <- data.frame(sfe2r$time)
 
-time2 <- rep(c(1:13862),85)
+time2 <- rep(c(1:nrow(fr)),86)
 sfe2r$time <- time2
 
 rm(sfe1r, time2)
+
+#Table A1: Descriptive stats 
+#####################################################################################
+sfe2rt <- na.omit(sfe2r)
+summary.t1 = sfe2rt %>%
+  summarise_all(funs(mean, sd, min, max))   
+sum.t1 <- data.frame(t(summary.t1))
+sum.t1$A <- rownames(sum.t1) 
+write_xlsx(sum.t1, "Output/TA1.xlsx")
+#####################################################################################
 
 #save(sfe2r, file="sfe2r.RData")
 #load("sfe2r.RData")
 
 
 R = 50
-Obs = 13862
+Obs = nrow(fr)
 stamp = c(1:Obs)
 
 #seeds
@@ -884,7 +886,7 @@ a = 301
 b = a+R
 
 #--------------------------------------------------------------------------------------------
-p0 <- proc.time()[3] #5hours
+#p0 <- proc.time()[3] #5hours
 set.seed(a:b) # R times
 lista <- list()
 for(k in 1:R){
@@ -897,6 +899,7 @@ for(k in 1:R){
   datalist = list()
   for(i in 1:Obs){
     if (nrow(datv)==0) g
+    ##check this to reduce time of loop
     ZZ <- data.frame(datv[which(datv["time"] == i ),])
     WW <- data.frame(ZZ[order(ZZ$tcr),])
     YY <- WW %>% mutate(cumsum = cumsum(capp2))
@@ -908,21 +911,20 @@ for(k in 1:R){
   
   lista[[k]] <- bd
 }
-print(proc.time()[3]-p0)
+#print(proc.time()[3]-p0)
 
-rm(cross, datalist, WW, YY, ZZ,i,p0, k, prb,a,b)
+rm(cross, datalist, WW, YY, ZZ,i, k, prb,a,b)
 
-save(lista, file="dos.RData")
+save(lista, file="Output/dos.RData")
 #--------------------------------------------------------------------------------------------
-setwd("C:\\Users\\...\\Replication\\R_paneldata\\SFE") 
-load("dos.RData")
 
+#load("dos.RData")
 
 #--------------------------------------------------------------------------------------------
 #Gathering the averages and constructing the panel data
-
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) #directory where the R script is located
 R = 50
-Obs = 13862
+Obs = nrow(fr)
 stamp = c(1:Obs)
 #fcosts
 suma1 = list()
@@ -1031,11 +1033,9 @@ sfe_two$period[1<=month & month<=3] <- "Winter"
 sfe_two$period[10<=month & month<=12] <- "Winter"
 detach(sfe_two)
 
-
-
 rm(a, aa, coa, coal, gas, oil, sfe1, dos)
 
-write_xlsx(sfe_two, "sfe_two.xlsx")
+write_xlsx(sfe_two, "Output/sfe_two.xlsx")
 
 #HISTOGRAMS MC-------------------------------------------------------
 #histogram
@@ -1043,75 +1043,20 @@ ggplot(data=sfe_two, aes(mumc)) +
   geom_histogram(binwidth=0.5) +
   scale_x_continuous(breaks = seq(0, 140, 30), lim = c(0, 140)) +
   scale_y_continuous(breaks = seq(0, 700, 200), lim = c(0, 700))
+print(proc.time()[3]-p0)
 
 #############################################################################################
 #MC CALCULATION - END PROCESS
 #############################################################################################
 
-
 #############################################################################################
 #SUMMARIES OF DATA and TABLES
 #############################################################################################
-#Table 2: SFE markups
-  remove(list = ls())
 
-  setwd("C:\...\\Replication\\R_paneldata\\SFE") 
-  mk <- read_xlsx("sfe_two.xlsx")
-  mk[mk =="peak3" ] <- "off"
-  mk[mk =="sppeak1"] <- "peak1"
-  mk[mk=="sppeak2"] <- "peak2"
-  load("dos.RData")
-  setwd("C:\\...\\Replication\\R_paneldata")
-  Resdm5 <- read_xlsx("resdm5.xlsx")
-  #cap
-  cap = list()
-  for(n in 1:50){  
-    cap[[n]] <- lista[[n]]["cap"]
-  }
-  c = do.call(cbind, cap) 
-  cap1 <- data.frame(lista[[1]]["time"], cap =rowMeans(c))
-  mk1 <- merge(mk, cap1, by = "time")
-  mk2 <- with(mk1, subset(mk1,  fcost>1))
-  must <- Resdm5[,c(1,16)]
-  must$time <- c(1:15288)
-  mk3 <- join(mk2, must, by = "time")
-  mk3$mks <- (mk2$price - mk2$fcost) / mk2$price
-  mk3$Q <- mk3$must + mk3$cap
-  mk3$eta <- -125*(mk3$price/mk3$Q)
-  mk3$theta <- abs(mk3$mks*mk3$eta) 
-  mk4 <- mk3[, c(26,31,33,34)]
-  mk5 <- with( mk4, subset(mk4,  !is.na(theta)))
-  
-  library(plyr)
-  table5 <- mk5 %>%
-    group_by(block)%>%
-    summarise_all(funs(mean=mean, sd=sd))
-  setwd("C:\\...\\Replication\\Tables") 
-  write_xlsx(table5, "T2_SFE.xlsx")
-  
-rm(c, cap, cap1, lista, mk, mk1, mk2, mk3, mk4, mk5, must, Resdm5, n)
-  
-
-#Table 1: Descriptive stats 
+#Figure 3: Prices
 #####################################################################################
 remove(list = ls())
 
-setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\R_paneldata\\SFE") 
-load("sfe2r.RData")
-sfe2r <- na.omit(sfe2r)
-summary.t1 = sfe2r %>%
-  summarise_all(funs(mean, sd, min, max))   
-sum.t1 <- data.frame(t(summary.t1))
-sum.t1$A <- rownames(sum.t1) 
-setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Tables") 
-write_xlsx(sum.t1, "T1.xlsx")
-
-
-#Figure 2: Prices
-#####################################################################################
-remove(list = ls())
-
-setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\R_paneldata") 
 f2 <- read_xlsx("inst.xlsx")
 d <- create_series('2017-01-02' ~ '2018-09-30', '1 hour')
 f2 <- cbind(d, f2)
@@ -1133,18 +1078,17 @@ figure2 <- ggplot(f2, aes(x=date)) +
   theme(legend.position = c(0.8, 0.95),
         legend.direction = "horizontal", legend.text = element_text(size=18),legend.background= element_blank(), panel.background = element_blank(), panel.grid.major=element_line(linetype="solid", colour="gray91"), axis.line = element_line(colour = "black") , plot.title = element_text(hjust = 0.5, size=18), axis.title.x = element_text(size=18),axis.title.y = element_text(size=18))
 
-pdf(file = "C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Figures\\F2.pdf",  
+pdf(file = "Output/FA3.pdf",  
     width = 18, 
     height = 10) 
 plot(figure2)
 dev.off()
 
 
-#Figure 3: Hourly consumption
+#Figure 4: Hourly consumption
 #####################################################################################
 remove(list = ls())
 
-setwd("C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\R_paneldata\\SFE") 
 f3<- read_xlsx("resdm5.xlsx")
 f3 <- f3[,c(2:18)]/1000
 d <- create_series('2017-01-02' ~ '2018-09-30', '1 hour')
@@ -1178,12 +1122,54 @@ figure3 <- ggplot(f3b, aes(x=date)) +
        y = "GWh",
        color = "Legend")
 figure3
-  
-pdf(file = "C:\\Users\\glori\\Documents\\Papers_202005\\1_Paper\\Replication\\Figures\\F3.pdf",  
+
+pdf(file = "Output/FA4.pdf",  
     width = 18, 
     height = 10) 
 plot(figure3)
 dev.off()
+
+
+
+#Table A8: SFE markups
+remove(list = ls())
+
+mk <- read_xlsx("Output/sfe_two.xlsx")
+mk[mk =="peak3" ] <- "off"
+mk[mk =="sppeak1"] <- "peak1"
+mk[mk=="sppeak2"] <- "peak2"
+load("Output/dos.RData")
+Resdm5 <- read_xlsx("resdm5.xlsx")
+#cap
+cap = list()
+for(n in 1:50){  
+  cap[[n]] <- lista[[n]]["cap"]
+}
+c = do.call(cbind, cap) 
+cap1 <- data.frame(lista[[1]]["time"], cap =rowMeans(c))
+mk1 <- merge(mk, cap1, by = "time")
+mk2 <- with(mk1, subset(mk1,  fcost>1))
+must <- Resdm5[,c(1,16)]
+must$time <- c(1:15288)
+mk3 <- join(mk2, must, by = "time")
+mk3$mks <- (mk2$price - mk2$fcost) / mk2$price
+mk3$Q <- mk3$must + mk3$cap
+mk3$eta <- -125*(mk3$price/mk3$Q)
+mk3$theta <- abs(mk3$mks*mk3$eta) 
+mk4 <- mk3[, c(26,31,33,34)]
+mk5 <- with( mk4, subset(mk4,  !is.na(theta)))
+
+library(plyr)
+tablea8 <- mk5 %>%
+  group_by(block)%>%
+  summarise_all(funs(mean=mean, sd=sd))
+
+write_xlsx(tablea8, "Output/TA8_SFE.xlsx")
+
+rm(c, cap, cap1, lista, mk, mk1, mk2, mk3, mk4, mk5, must, Resdm5, n)
+
+
+
 
 
 
